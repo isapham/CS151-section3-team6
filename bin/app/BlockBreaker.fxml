@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.BlockBreakerController">
+   <center>
+      <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="pane" layoutX="119.0" layoutY="40.0" prefHeight="552.0" prefWidth="600.0" style="-fx-border-color: white;">
+               <children>
+                  <Circle fx:id="ball" fill="#bcbcbc" layoutX="300.0" layoutY="493.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                  <Rectangle fx:id="paddle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="231.0" layoutY="508.0" stroke="BLACK" strokeType="INSIDE" width="138.0" />
+                  <GridPane fx:id="brickGrid" layoutX="5.0" layoutY="7.0" prefHeight="153.0" prefWidth="590.0">
+                    <columnConstraints>
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    </rowConstraints>
+                     <children>
+                        <Rectangle fx:id="rb1" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="rb2" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="rb3" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="rb4" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="rb5" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="rb6" arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb1" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb2" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb3" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb4" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb5" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="hb6" arcHeight="5.0" arcWidth="5.0" fill="#ff1ff5" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb1" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb2" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb3" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb4" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb5" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="pb6" arcHeight="5.0" arcWidth="5.0" fill="#a11fff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="bb6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb1" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb2" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb3" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb4" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb5" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Rectangle fx:id="tb6" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
+                  <Label fx:id="messageForLose" alignment="CENTER" layoutX="74.0" layoutY="305.0" prefHeight="40.0" prefWidth="452.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="messageForLose1" alignment="CENTER" layoutX="22.0" layoutY="345.0" prefHeight="40.0" prefWidth="547.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="615.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="20.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane prefHeight="71.0" prefWidth="779.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER" layoutX="121.0" prefHeight="70.0" prefWidth="649.0" style="-fx-background-color: black;">
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints maxWidth="311.0" minWidth="10.0" prefWidth="300.0" />
+                  <ColumnConstraints maxWidth="32.0" minWidth="10.0" prefWidth="14.0" />
+                  <ColumnConstraints maxWidth="90.0" minWidth="10.0" prefWidth="69.0" />
+                  <ColumnConstraints maxWidth="104.0" minWidth="10.0" prefWidth="80.0" />
+                  <ColumnConstraints maxWidth="90.0" minWidth="10.0" prefWidth="34.0" />
+                  <ColumnConstraints maxWidth="89.0" minWidth="10.0" prefWidth="89.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="41.0" prefWidth="307.0" text="BLOCK BREAKER" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="American Typewriter" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="23.0" prefWidth="86.0" text="Points:" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="American Typewriter" size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="pointsTextField" alignment="CENTER_RIGHT" focusTraversable="false" prefHeight="27.0" prefWidth="27.0" text="0" GridPane.columnIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="5.0" right="5.0" top="20.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

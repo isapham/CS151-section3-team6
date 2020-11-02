@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.GamesController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="pongIcon" fitHeight="160.0" fitWidth="160.0" layoutX="199.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="snakeIcon" fitHeight="160.0" fitWidth="160.0" layoutX="471.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="blockBreakerIcon" fitHeight="160.0" fitWidth="160.0" layoutX="199.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tetrisIcon" fitHeight="160.0" fitWidth="160.0" layoutX="471.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="199.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="PONG">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="199.0" layoutY="474.0" mnemonicParsing="false" onAction="#switchToBlockBreaker" prefHeight="27.0" prefWidth="160.0" text="BLOCK BREAKER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="471.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="SNAKE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="471.0" layoutY="474.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="TETRIS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="538.0" mnemonicParsing="false" onAction="#switchToMainMenu" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-radius: 20;" text="MAIN MENU" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane prefHeight="110.0" prefWidth="844.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="controllerIcon" fitHeight="100.0" fitWidth="100.0" layoutX="177.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="314.0" layoutY="10.0" text="GAMES" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="70.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="pointIcon" fitHeight="56.0" fitWidth="56.0" layoutX="557.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="613.0" layoutY="33.0" text="999 PTS" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
