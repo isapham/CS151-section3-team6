@@ -1,7 +1,9 @@
 package app;
 
 import java.io.IOException;
+import java.net.URL;
 import java.security.SecureRandom;
+import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,12 +11,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -31,6 +36,7 @@ public class BlockBreakerController {
     @FXML private TextField pointsTextField;
     @FXML private Label messageForLose; 
     @FXML private Label messageForLose1;
+    @FXML private ImageView pointsIcon;
     
     // Teal Bricks - 1st Row
     @FXML private Rectangle tb6;
@@ -85,6 +91,7 @@ public class BlockBreakerController {
 
 	// Initialize - Game Launch
 	public void initialize() {
+		pointsIcon.setImage(new Image("/app/cs151GameGalPointsIcon1.png"));
 		// Define a TimeLine animation for the ball and paddle
     	Timeline timelineAnimation = new Timeline();
     	
@@ -206,8 +213,8 @@ public class BlockBreakerController {
 	// Add points to score
 	private void score(int num) {
 		points += num;
-    	pointsTextField.setText(points.toString());;
-		
+    	pointsTextField.setStyle("-fx-text-fill: white; -fx-background-color: black");
+    	pointsTextField.setText(points.toString());
 	}
 	
 	// Check if the ball collides with a brick
@@ -400,9 +407,7 @@ public class BlockBreakerController {
 			return false;
 		}
 	}
-	
-
-	public void switchToMenu(ActionEvent event) {
+	public void switchToGameMenu(ActionEvent event) {
     	Parent gamesMenu;
     
 		try {

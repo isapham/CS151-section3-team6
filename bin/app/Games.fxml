@@ -16,7 +16,7 @@
             <ImageView fx:id="snakeIcon" fitHeight="160.0" fitWidth="160.0" layoutX="471.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="blockBreakerIcon" fitHeight="160.0" fitWidth="160.0" layoutX="199.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tetrisIcon" fitHeight="160.0" fitWidth="160.0" layoutX="471.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="199.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="PONG">
+            <Button layoutX="199.0" layoutY="209.0" mnemonicParsing="false" onAction="#switchToPong" prefHeight="27.0" prefWidth="160.0" text="PONG">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
