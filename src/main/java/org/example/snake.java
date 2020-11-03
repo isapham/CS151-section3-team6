@@ -1,8 +1,6 @@
-package sample;
+package application;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,7 +16,7 @@ import java.util.Random;
 
 public class Main extends Application
 {
-    static int speed = 2;
+    static int speed = 5;
     static int width = 20;
     static int height = 20;
     static int cornerSize = 25;
@@ -74,7 +72,7 @@ public class Main extends Application
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         root.getChildren().add(canvas);
 
-        new AnimationTimer()                //ticks of the game, more ticks = more frames = faster snake animation
+        new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
             long lastTick = 0;
             @Override
@@ -85,7 +83,7 @@ public class Main extends Application
                     lastTick = now;
                     tick(graphicsContext);
                 }
-                if(now - lastTick > 1000000000/speed)
+                if(now - lastTick > 900000000/speed)
                 {
                     lastTick = now;
                     tick(graphicsContext);
@@ -117,7 +115,6 @@ public class Main extends Application
                     /* escape key for pause menu
                     if(key.getCode() == KeyCode.ESCAPE)
                     {
-
                     }
                     */
                 }
@@ -199,7 +196,7 @@ public class Main extends Application
         graphicsContext.fillRect(0, 0, width * cornerSize, height * cornerSize);                    //game display resolution
         graphicsContext.setFill(Color.WHITE);                                                       //game score text color
         graphicsContext.setFont(new Font("", 30));                                                  //game score font size
-        graphicsContext.fillText("Score: ", +(speed - 6), 10, 30);                                  //game score at position
+        graphicsContext.fillText("Score: ", +(speed - 6), 30, 50);                                  //game score at position
         Color foodColor = Color.RED;                                                                //food color
         graphicsContext.setFill(foodColor);                                                         //fill food with food color
         graphicsContext.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
