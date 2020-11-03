@@ -22,6 +22,7 @@
                <children>
                    <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Snake" />
                    <Button fx:id="secondaryButton2" onAction="#switchToBlockBreaker" text="Block Breaker" />
+                   <Button fx:id="secondaryButton3" onAction="#switchToTetris" text="Tetris" />
                </children>
             </VBox>
          </center>

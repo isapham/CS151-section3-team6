@@ -13,4 +13,8 @@ public class GamesMenuController {
     private void switchToBlockBreaker() throws IOException {
         App.setRoot("blockBreaker");
     }
+    @FXML
+    private void switchToTetris() throws IOException{
+        App.setRoot("tetrisGame");
+    }
 }
