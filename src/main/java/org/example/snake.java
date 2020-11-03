@@ -149,7 +149,7 @@ public class Main extends Application
         switch (direction)                  //switch case if snake touches the borders of the game
         {
             case down:
-                snake.get(0).y--;
+                snake.get(0).y++;
                 if(snake.get(0).y < 0)      //if snake goes past bottom border, then game is over
                 {
                     gameOver = true;
@@ -157,7 +157,7 @@ public class Main extends Application
                 break;
 
             case up:
-                snake.get(0).y++;
+                snake.get(0).y--;
                 if(snake.get(0).y > height) //if snake goes past top border, then game is over
                 {
                     gameOver = true;
