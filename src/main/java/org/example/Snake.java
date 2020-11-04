@@ -59,7 +59,6 @@ public class Main extends Application
                     continue;
                 }
             }
-        //  speed++;
             score++;
             break;
         }
