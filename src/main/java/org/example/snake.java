@@ -46,7 +46,7 @@ public class Main extends Application
 
     public static void newFood()    //function for spawning food at random coordinates
     {
-        start: while(true)
+        while(true)
         {
             foodX = random.nextInt(width);
             foodY = random.nextInt(height);
@@ -55,7 +55,7 @@ public class Main extends Application
             {
                 if(canvas.x == foodX && canvas.y == foodY)
                 {
-                    continue start;
+                    continue;
                 }
             }
             speed++;
