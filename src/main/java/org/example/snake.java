@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class Main extends Application
 {
-    static int speed = 5;
+    static int speed = 7;
     static int width = 20;
     static int height = 20;
     static int cornerSize = 25;
@@ -93,34 +93,35 @@ public class Main extends Application
 
         Scene scene = new Scene(root, width * cornerSize, height * cornerSize);
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->       //controls for the snake on keyboard
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->       //controls for the snake on keyboard (snake cannot reverse direction)
                 {
-                    if(key.getCode() == KeyCode.UP)
+                    if(key.getCode() == KeyCode.UP && direction != Move.down) 	//if up key is pressed AND the snake is not moving down
                     {
-                        direction = Move.up;
+                        direction = Move.up;									//move up	
                     }
-                    if(key.getCode() == KeyCode.DOWN)
+                    if(key.getCode() == KeyCode.DOWN && direction != Move.up)	//if down key is pressed AND the snake is not moving up
                     {
-                        direction = Move.down;
+                        direction = Move.down;									//move down
                     }
-                    if(key.getCode() == KeyCode.LEFT)
+                    if(key.getCode() == KeyCode.LEFT && direction != Move.right)//if left key is pressed AND the snake is not moving right
                     {
-                        direction = Move.left;
-                    }
-                    if(key.getCode() == KeyCode.RIGHT)
+                        direction = Move.left;									//move left
+                    }                 
+                    if(key.getCode() == KeyCode.RIGHT && direction != Move.left)//if right key is pressed AND the snake is not moving left
                     {
-                        direction = Move.right;
+                        direction = Move.right;									//move right
                     }
-
+                    
                     /* escape key for pause menu
                     if(key.getCode() == KeyCode.ESCAPE)
                     {
+                    	
                     }
                     */
                 }
                 );
 
-        snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
+        snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Snake");
@@ -143,11 +144,11 @@ public class Main extends Application
             snake.get(i).y = snake.get(i - 1).y;
         }
 
-        switch (direction)                  //switch case if snake touches the borders of the game
+        switch (direction)                  //switch case if snake touches the borders of the game while moving
         {
             case down:
                 snake.get(0).y++;
-                if(snake.get(0).y < 0)      //if snake goes past bottom border, then game is over
+                if(snake.get(0).y > height-1) //if snake goes past bottom border, then game is over
                 {
                     gameOver = true;
                 }
@@ -155,7 +156,7 @@ public class Main extends Application
 
             case up:
                 snake.get(0).y--;
-                if(snake.get(0).y > height) //if snake goes past top border, then game is over
+                if(snake.get(0).y < 0)      //if snake goes past top border, then game is over
                 {
                     gameOver = true;
                 }
@@ -171,7 +172,7 @@ public class Main extends Application
 
             case right:
                 snake.get(0).x++;
-                if(snake.get(0).x > width)  //if snake goes past right border, then game is over
+                if(snake.get(0).x > width-1)  //if snake goes past right border, then game is over
                 {
                     gameOver = true;
                 }
@@ -194,9 +195,11 @@ public class Main extends Application
 
         graphicsContext.setFill(Color.BLACK);                                                       //game background color
         graphicsContext.fillRect(0, 0, width * cornerSize, height * cornerSize);                    //game display resolution
+        
         graphicsContext.setFill(Color.WHITE);                                                       //game score text color
-        graphicsContext.setFont(new Font("", 30));                                                  //game score font size
-        graphicsContext.fillText("Score: ", +(speed - 6), 30, 50);                                  //game score at position
+        graphicsContext.setFont(new Font("", 20));                                                  //game score font size
+        graphicsContext.fillText("Score: " + (speed - 8), 10, 20);                                 	//game score at position
+        
         Color foodColor = Color.RED;                                                                //food color
         graphicsContext.setFill(foodColor);                                                         //fill food with food color
         graphicsContext.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
