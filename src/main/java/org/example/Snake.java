@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -65,14 +66,14 @@ public class Main extends Application
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) 
+    {
         newFood();
-
         VBox root = new VBox();
         Canvas canvas = new Canvas(width * cornerSize, height * cornerSize);
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         root.getChildren().add(canvas);
-
+        
         new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
             long lastTick = 0;
@@ -94,7 +95,7 @@ public class Main extends Application
 
         Scene scene = new Scene(root, width * cornerSize, height * cornerSize);
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->       //controls for the snake on keyboard (snake cannot reverse direction)
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->      					 //controls for the snake on keyboard (snake cannot reverse direction)
                 {
                     if(key.getCode() == KeyCode.UP && direction != Move.down) 	//if up key is pressed AND the snake is not moving down
                     {
@@ -118,12 +119,24 @@ public class Main extends Application
                     {
                     	
                     }
-                    */
+                    */                  
+                    
+                    if(key.getCode() == KeyCode.SPACE)
+                    {
+                    	//primaryStage.close();									//closes application
+                    	gameOver = false;										//reset game variables
+                    	direction = Move.left;				
+                    	score = -1;
+                    	newFood();
+                    	snake.clear();
+                    	snake.add(new Corner(width / 2, height / 2));                    	
+                    	primaryStage.show();
+                    }
                 }
                 );
 
         snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
-
+        
         primaryStage.setScene(scene);
         primaryStage.setTitle("Snake");
         primaryStage.show();
@@ -136,6 +149,10 @@ public class Main extends Application
             graphicsContext.setFill(Color.RED);                 //font color of game over text
             graphicsContext.setFont(new Font("", 50));          //font size
             graphicsContext.fillText("GAME OVER", 100, 250);    //Display text at x, y position
+            
+            graphicsContext.setFill(Color.WHITE);                 //font color of game over text
+            graphicsContext.setFont(new Font("", 20));          //font size
+            graphicsContext.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
             return;
         }
 
