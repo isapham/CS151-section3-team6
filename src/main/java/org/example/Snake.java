@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class Main extends Application
 {
-	final static int speed = 10;
+	final static int speed = 19;
     static int score = -1;
     final static int width = 34;
     final static int height = 30;
