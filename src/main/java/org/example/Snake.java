@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -17,10 +16,10 @@ import java.util.Random;
 
 public class Main extends Application
 {
-    static int speed = 10;
+	final static int speed = 10;
     static int score = -1;
-    static int width = 20;
-    static int height = 20;
+    final static int width = 34;
+    final static int height = 30;
     static int cornerSize = 25;
     static int foodX = 0;
     static int foodY = 0;
@@ -125,12 +124,23 @@ public class Main extends Application
                     {
                     	//primaryStage.close();									//closes application
                     	gameOver = false;										//reset game variables
-                    	direction = Move.left;				
+                    	direction = Move.left;		
                     	score = -1;
                     	newFood();
                     	snake.clear();
                     	snake.add(new Corner(width / 2, height / 2));                    	
                     	primaryStage.show();
+                    }
+                    if(key.getCode() == KeyCode.ENTER)
+                    {
+                    	//primaryStage.close();									//closes application
+                    	gameOver = false;										//reset game variables
+                    	direction = Move.left;
+                    	score = -1;
+                    	newFood();
+                    	snake.clear();
+                    	snake.add(new Corner(width / 2, height / 2));              	
+                    	primaryStage.close();
                     }
                 }
                 );
@@ -146,14 +156,18 @@ public class Main extends Application
     {
         if(gameOver)                                            //game over screen
         {
-            graphicsContext.setFill(Color.RED);                 //font color of game over text
-            graphicsContext.setFont(new Font("", 50));          //font size
-            graphicsContext.fillText("GAME OVER", 100, 250);    //Display text at x, y position
-            
-            graphicsContext.setFill(Color.WHITE);                 //font color of game over text
-            graphicsContext.setFont(new Font("", 20));          //font size
-            graphicsContext.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
-            return;
+        	 graphicsContext.setFill(Color.RED);                 //font color of game over text
+             graphicsContext.setFont(new Font("", 100));          //font size
+             graphicsContext.fillText("GAME OVER", 150, 350);    //Display text at x, y position
+             
+             graphicsContext.setFill(Color.WHITE);                 //font color of game over text
+             graphicsContext.setFont(new Font("", 50));          //font size
+             graphicsContext.fillText("Press SPACEBAR to retry", 160, 400);    //Display text at x, y position   
+             
+             graphicsContext.setFill(Color.WHITE);                 //font color of game over text
+             graphicsContext.setFont(new Font("", 50));          //font size
+             graphicsContext.fillText("Press ENTER to quit", 160, 450);    //Display text at x, y position  
+             return;
         }
 
         for(int i = snake.size() - 1; i >= 1; i--)
