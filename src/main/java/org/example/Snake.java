@@ -234,7 +234,7 @@ public class Main extends Application
         
         Color foodColor = Color.RED;                                                                //food color
         graphicsContext.setFill(foodColor);                                                         //fill food with food color
-        graphicsContext.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        graphicsContext.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
 
         for(Corner canvas : snake)
         {
