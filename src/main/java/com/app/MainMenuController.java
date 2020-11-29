@@ -29,12 +29,34 @@ public class MainMenuController implements Initializable{
 		scene2.show();
 	}
 	
+	public void switchToSettings(ActionEvent event) throws IOException{
+		Parent settingPage = FXMLLoader.load(getClass().getResource("gameSettings.fxml"));
+		Scene setting_scene = new Scene(settingPage, 844, 750);
+		Stage scene3 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		scene3.setScene(setting_scene);
+		scene3.setTitle("Settings");
+		scene3.show();
+	}
+	
+	public void switchToItemShop(ActionEvent event) throws IOException{
+		Parent itemShopPage = FXMLLoader.load(getClass().getResource("itemShop.fxml"));
+		Scene itemShopScene = new Scene(itemShopPage, 844, 750);
+		Stage scene4 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		scene4.setScene(itemShopScene);
+		scene4.setTitle("Item Shop");
+		scene4.show();
+		
+	}
+	
+	
+	
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
 		houseIcon.setImage(new Image("/main/java/com/app/cs151GameShopIcon.png"));
 		playIcon.setImage(new Image("/main/java/com/app/cs151GameConsoleIcon.png"));
 		snowFlakeIcon.setImage(new Image("/main/java/com/app/cs151GameGearIconThing.png"));
 		championIcon.setImage(new Image("/main/java/com/app/cs151GameHiScoreIcon.png"));
+		
 	}
 	
 }

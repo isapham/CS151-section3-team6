@@ -156,7 +156,7 @@ public class GamesController implements Initializable{
         Parent root = fxmlLoader.load();
         GuiController c = fxmlLoader.getController();
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("TetrisJFX");
+        primaryStage.setTitle("Tetris");
         Scene scene = new Scene(root, 400, 510);
         primaryStage.setScene(scene);
         primaryStage.show();
