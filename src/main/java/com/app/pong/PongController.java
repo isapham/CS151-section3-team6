@@ -1,6 +1,10 @@
 package main.java.com.app.pong;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import main.java.com.app.GamesController;
 
 import java.util.Random;
@@ -33,21 +37,21 @@ public class PongController {
 	public static double BALL_RADIUS = 10; //radius of ball!
 	public static int ballYSpeed = 1;
 	public static int ballXSpeed = 1;
-	Integer ppoints = 0;
+	public static Integer ppoints = 0;
 	 //ball's initial location
     public static double ballXPos = GamesController.PONG_WIDTH/2;
     public static double ballYPos = GamesController.PONG_WIDTH/2;
     
-  //score
+    //score
     public static int playerScore = 0;
     public static int compScore = 0;
     
-  //X-Position of the paddles
+    //X-Position of the paddles
     public int playerPaddleXPos = 0;
     public double compPaddleXPos = GamesController.PONG_WIDTH - GamesController.PADDLE_WIDTH;
     
 	public void initialize() {
-		playerPointIcon.setImage(new Image("/main/java/com/app/cs151GameGalPointsIcon1.png"));
+		playerPointIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Timeline t1 = new Timeline(new KeyFrame(Duration.millis(10), e ->run(gc)));
 		t1.setCycleCount(Timeline.INDEFINITE);
@@ -140,20 +144,33 @@ public class PongController {
         gc.fillRect(playerPaddleXPos, GamesController.playerPaddleYPos, GamesController.PADDLE_WIDTH, GamesController.PADDLE_HEIGHT);
     }
 	
+	public void switchToGameMenu(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/Games.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent gamesMenu = fxmlLoader.load();
+		    
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(gamesMenuScene);
+		window.show();
+		
+	 }
+	
+	public void switchToSavePoint(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/PongDB.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent save_point_page = fxmlLoader.load();
 
-	public void switchToGameMenu(ActionEvent event) {
-    	Parent gamesMenu;
-    
-		try {
-			gamesMenu = FXMLLoader.load(getClass().getResource("Games.fxml"));
-			Scene gamesMenuScene = new Scene (gamesMenu);
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			window.setScene(gamesMenuScene);
-			window.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Scene save_point_scene = new Scene(save_point_page);
+		Stage scene4 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		
+		scene4.setTitle("Save Point to DB"); 
+		scene4.setScene(save_point_scene);
+		scene4.show();
 	 }
 	
 }

@@ -1,5 +1,10 @@
 package main.java.com.app.tetris.gui;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,8 +18,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.Reflection;
 import javafx.scene.input.KeyCode;
@@ -25,6 +34,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.com.app.tetris.logic.DownData;
 import main.java.com.app.tetris.logic.ViewData;
@@ -71,7 +81,14 @@ public class GuiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //Font.loadFont(getClass().getClassLoader().getResource("../app/tetris/gui/digital.ttf").toExternalForm(), 38);
+//        try {
+//			Font.loadFont(new FileInputStream(new File("src/main/resources/digital.ttf")), 12);
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+        //Font.loadFont(getClass().getClassLoader().getResource("src/main/resources/digital.ttf").toExternalForm(), 38);
         gamePanel.setFocusTraversable(true);
         gamePanel.requestFocus();
         gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -104,7 +121,7 @@ public class GuiController implements Initializable {
 
             }
         });
-        //gameOverPanel.setVisible(false);
+        gameOverPanel.setVisible(false);
         pauseButton.selectedProperty().bindBidirectional(isPause);
         pauseButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -274,4 +291,30 @@ public class GuiController implements Initializable {
     public void pauseGame(ActionEvent actionEvent) {
         gamePanel.requestFocus();
     }
+    
+	public void switchToGameMenu(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/Games.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent gamesMenu = fxmlLoader.load();
+		    
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(gamesMenuScene);
+		window.show();
+	}
+	
+	public void switchToSavePoint(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/TetrisDB.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent DBMenu = fxmlLoader.load();
+		    
+		Scene DBScene = new Scene (DBMenu);
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(DBScene);
+		window.show();
+	}
 }

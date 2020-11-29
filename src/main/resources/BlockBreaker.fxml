@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.BlockBreakerController">
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.BlockBreakerController">
    <center>
       <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
@@ -83,7 +83,15 @@
                   </Label>
                </children>
             </Pane>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="615.0" mnemonicParsing="false" onAction="#switchToDataInputBox" prefHeight="20.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchToGameMenu" prefHeight="20.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="424.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchToSavePoint" prefHeight="58.0" prefWidth="278.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="SAVE POINT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Courier New Bold" size="30.0" />
                </font>

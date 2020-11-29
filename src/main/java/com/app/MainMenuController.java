@@ -1,5 +1,6 @@
 package main.java.com.app;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,12 @@ public class MainMenuController implements Initializable{
 	@FXML  ImageView championIcon;
 	
 	public void buttonAction(ActionEvent event) throws IOException{
-		Parent home_page_parent = FXMLLoader.load(getClass().getResource("Games.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/Games.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent home_page_parent = fxmlLoader.load();
+		
 		Scene home_page_scene = new Scene(home_page_parent,844,750);
 		Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		scene2.setScene(home_page_scene);
@@ -31,10 +37,10 @@ public class MainMenuController implements Initializable{
 	
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
-		houseIcon.setImage(new Image("/main/java/com/app/cs151GameShopIcon.png"));
-		playIcon.setImage(new Image("/main/java/com/app/cs151GameConsoleIcon.png"));
-		snowFlakeIcon.setImage(new Image("/main/java/com/app/cs151GameGearIconThing.png"));
-		championIcon.setImage(new Image("/main/java/com/app/cs151GameHiScoreIcon.png"));
+		houseIcon.setImage(new Image("/main/resources/cs151GameShopIcon.png"));
+		playIcon.setImage(new Image("/main/resources/cs151GameConsoleIcon.png"));
+		snowFlakeIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
+		championIcon.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 	}
 	
 }

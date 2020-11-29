@@ -1,6 +1,9 @@
 package main.java.com.app.blockBreaker;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.SecureRandom;
 
 import javafx.animation.KeyFrame;
@@ -17,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -79,8 +83,7 @@ public class BlockBreakerController {
 
   
 	// Game variables
-    Integer lives = 0;
-    Integer points = 0;
+    public static Integer points = 0;
     
     
 	// Random for ball bouncing
@@ -90,7 +93,7 @@ public class BlockBreakerController {
 
 	// Initialize - Game Launch
 	public void initialize() {
-		pointsIcon.setImage(new Image("/main/java/com/app/cs151GameGalPointsIcon1.png"));
+		pointsIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
 		// Define a TimeLine animation for the ball and paddle
     	Timeline timelineAnimation = new Timeline();
     	
@@ -406,31 +409,53 @@ public class BlockBreakerController {
 			return false;
 		}
 	}
-//	public void switchToGameMenu(ActionEvent event) {
-//    	Parent gamesMenu;
-//    
-//		try {
-//			gamesMenu = FXMLLoader.load(getClass().getResource("Games.fxml"));
-//			Scene gamesMenuScene = new Scene (gamesMenu);
-//			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//			window.setScene(gamesMenuScene);
-//			window.show();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	 }
 	
-	public static Stage window ;
+	public void switchToGameMenu(ActionEvent event) {
+    	Parent gamesMenu;
+    
+		try {
+			gamesMenu = FXMLLoader.load(getClass().getResource("Games.fxml"));
+			Scene gamesMenuScene = new Scene (gamesMenu);
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(gamesMenuScene);
+			window.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
 	
-	public void switchToDataInputBox() throws IOException{
-		Parent db_page = FXMLLoader.load(getClass().getResource("InputToDatabase.fxml"));
-		Scene db_scene = new Scene(db_page);
-		//Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window = new Stage();
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle("Input to Database"); 
-		window.setScene(db_scene);
-		window.show();
-	}
+	public void switchToSavePoint(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/BlockBreakerDB.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent save_point_page = fxmlLoader.load();
+
+		Scene save_point_scene = new Scene(save_point_page);
+		Stage scene4 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		
+		scene4.setTitle("Save Point to DB"); 
+		scene4.setScene(save_point_scene);
+		scene4.show();
+	 }
+	
+//	//public static Stage window ;
+//	
+//	public void switchToDataInputBox() throws IOException{
+//		
+//		FXMLLoader fxmlLoader = new FXMLLoader();
+//		String pathToFxml = "src/main/resources/InputToDatabase.fxml";
+//		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+//		fxmlLoader.setLocation(fxmlUrl);
+//		Parent db_page = fxmlLoader.load();
+//		
+//		Scene db_scene = new Scene(db_page);
+//		//Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//		Stage window = new Stage();
+//		window.initModality(Modality.APPLICATION_MODAL);
+//		window.setTitle("Input to Database"); 
+//		window.setScene(db_scene);
+//		window.show();
+//	}
 }

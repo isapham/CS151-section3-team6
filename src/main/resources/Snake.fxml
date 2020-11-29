@@ -11,15 +11,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="844.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.PongController">
+<BorderPane prefHeight="750.0" prefWidth="844.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.snake.SnakeController">
    <center>
       <Pane prefHeight="565.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="canvas" height="552.0" layoutX="110.0" width="600.0">
+            <Canvas fx:id="canvasSnake" height="552.0" layoutX="110.0" width="600.0">
                <effect>
                   <InnerShadow color="WHITE" />
                </effect></Canvas>
-            <Button layoutX="300.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToGameMenu" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textFill="WHITE">
+            <Button layoutX="140.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToGameMenu" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="424.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToSavePoint" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textFill="WHITE">
                <font>
                   <Font name="Courier New Bold" size="30.0" />
                </font>
@@ -33,12 +41,12 @@
    <top>
       <Pane prefHeight="83.0" prefWidth="844.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="120.0" text="PONG" textFill="WHITE">
+            <Label layoutX="120.0" text="SNAKE" textFill="WHITE">
                <font>
                   <Font name="Courier New Bold" size="70.0" />
                </font>
             </Label>
-            <TextField fx:id="playerScoreTextField" layoutX="501.0" layoutY="21.0" style="-fx-background-color: black;" text="0">
+            <TextField fx:id="playerSnakeScoreTextField" layoutX="501.0" layoutY="21.0" style="-fx-background-color: black;" text="0">
                <font>
                   <Font name="Courier New Bold" size="30.0" />
                </font>
