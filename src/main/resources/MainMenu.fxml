@@ -38,7 +38,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="ITEM SHOP" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToItemShop" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="ITEM SHOP" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -52,7 +52,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="SETTING" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToGameSetting" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="SETTING" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -66,7 +66,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="HI-SCORES" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#switchToHiScore" prefHeight="54.0" prefWidth="323.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="HI-SCORES" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>

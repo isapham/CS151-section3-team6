@@ -22,6 +22,7 @@ public class MainMenuController implements Initializable{
 	@FXML  ImageView houseIcon;
 	@FXML  ImageView championIcon;
 	
+	@FXML
 	public void buttonAction(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
@@ -41,6 +42,30 @@ public class MainMenuController implements Initializable{
 		playIcon.setImage(new Image("/main/resources/cs151GameConsoleIcon.png"));
 		snowFlakeIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
 		championIcon.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
+	}
+	
+	
+	public void switchToItemShop(ActionEvent event) throws IOException{
+		
+	}
+	
+	@FXML
+	public void switchToHiScore(ActionEvent event) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/HiScore.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent home_page_parent = fxmlLoader.load();
+		
+		Scene home_page_scene = new Scene(home_page_parent,844,750);
+		Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		scene2.setScene(home_page_scene);
+		scene2.show();
+	}
+	
+	@FXML
+	public void switchToGameSetting(ActionEvent event) throws IOException{
+		
 	}
 	
 }

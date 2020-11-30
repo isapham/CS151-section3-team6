@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -297,4 +300,161 @@ public class GamesController implements Initializable{
 			throw e;
 		}
 	}
+	
+	public static ObservableList<HiScore> getPongRecords() throws ClassNotFoundException, SQLException{
+		String sql = "SELECT PongScore FROM users"+" ORDER BY PongScore DESC";
+		try {
+			ResultSet rsSet = ConnectionClass.dbExecute(sql);
+			ObservableList<HiScore> list = getPongScoreObjects(rsSet);
+			return list;
+		}
+		catch (SQLException e) {
+			System.out.println("Error occured while fetching the records from DB"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	private static ObservableList<HiScore> getPongScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
+		try{
+			ObservableList<HiScore> list = FXCollections.observableArrayList();
+			
+			while(rsSet.next()) {
+				HiScore hiScore = new HiScore();
+				hiScore.setPoScore(rsSet.getInt("PongScore"));
+				list.add(hiScore);
+			}
+			return list;
+		}catch (SQLException e){
+			System.out.println("Error ocurred while fetching the data from DC"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public static ObservableList<HiScore> getBlockBreakerRecords() throws ClassNotFoundException, SQLException{
+		String sql = "SELECT BlockBreakerScore FROM users"+" ORDER BY BlockBreakerScore DESC";
+		try {
+			ResultSet rsSet = ConnectionClass.dbExecute(sql);
+			ObservableList<HiScore> list = getBlockBreakerScoreObjects(rsSet);
+			return list;
+		}catch (SQLException e) {
+			System.out.println("Error occured while fetching the records from DB"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	private static ObservableList<HiScore> getBlockBreakerScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
+		try{
+			ObservableList<HiScore> list = FXCollections.observableArrayList();
+			
+			while(rsSet.next()) {
+				HiScore hiScore = new HiScore();
+				hiScore.setBBScore(rsSet.getInt("BlockBreakerScore"));
+				list.add(hiScore);
+			}
+			return list;
+		}catch (SQLException e){
+			System.out.println("Error ocurred while fetching the data from DC"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public static ObservableList<HiScore> getTetrisRecords() throws ClassNotFoundException, SQLException{
+		String sql = "SELECT TetrisScore FROM users"+" ORDER BY TetrisScore DESC";
+		try {
+			ResultSet rsSet = ConnectionClass.dbExecute(sql);
+			ObservableList<HiScore> list = getTetrisScoreObjects(rsSet);
+			return list;
+		}catch (SQLException e) {
+			System.out.println("Error occured while fetching the records from DB"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	private static ObservableList<HiScore> getTetrisScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
+		try{
+			ObservableList<HiScore> list = FXCollections.observableArrayList();
+			
+			while(rsSet.next()) {
+				HiScore hiScore = new HiScore();
+				hiScore.setTetScore(rsSet.getInt("TetrisScore"));
+				list.add(hiScore);
+			}
+			return list;
+		}catch (SQLException e){
+			System.out.println("Error ocurred while fetching the data from DC"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public static ObservableList<HiScore> getSnakeRecords() throws ClassNotFoundException, SQLException{
+		String sql = "SELECT SnakeScore FROM users"+" ORDER BY SnakeScore DESC";
+		try {
+			ResultSet rsSet = ConnectionClass.dbExecute(sql);
+			ObservableList<HiScore> list = getSnakeScoreObjects(rsSet);
+			return list;
+		}catch (SQLException e) {
+			System.out.println("Error occured while fetching the records from DB"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	private static ObservableList<HiScore> getSnakeScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
+		try{
+			ObservableList<HiScore> list = FXCollections.observableArrayList();
+			
+			while(rsSet.next()) {
+				HiScore hiScore = new HiScore();
+				hiScore.setSnaScore(rsSet.getInt("SnakeScore"));
+				list.add(hiScore);
+			}
+			return list;
+		}catch (SQLException e){
+			System.out.println("Error ocurred while fetching the data from DC"+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+//	public static ObservableList<HiScore> getAllRecords() throws ClassNotFoundException, SQLException{
+//		String sql = "select * from users";
+//		try {
+//			ResultSet rsSet = ConnectionClass.dbExecute(sql);
+//			ObservableList<HiScore> list = getScoreObjects(rsSet);
+//			return list;
+//		}
+//		catch (SQLException e) {
+//			System.out.println("Error occured while fetching the records from DB"+e);
+//			e.printStackTrace();
+//			throw e;
+//		}
+//	}
+
+//	private static ObservableList<HiScore> getScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
+//		try{
+//			ObservableList<HiScore> list = FXCollections.observableArrayList();
+//			
+//			while(rsSet.next()) {
+//				HiScore hiScore = new HiScore();
+//				hiScore.setBBScore(rsSet.getInt("BlockBreakerScore"));
+//				hiScore.setTetScore(rsSet.getInt("TetrisScore"));
+//				hiScore.setPoScore(rsSet.getInt("PongScore"));
+//				hiScore.setSnaScore(rsSet.getInt("SnakeScore"));
+//				list.add(hiScore);
+//			}
+//			return list;
+//		}
+//	
+//		catch (SQLException e){
+//			System.out.println("Error ocurred while fetching the data from DC"+e);
+//			e.printStackTrace();
+//			throw e;
+//		}
+//	}
+	
 }
