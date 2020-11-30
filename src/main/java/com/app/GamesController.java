@@ -125,8 +125,8 @@ public class GamesController implements Initializable{
 	public static int PADDLE_HEIGHT = 100;
 	public static int PADDLE_WIDTH = 15;
 	//game canvas
-	public static int PONG_HEIGHT = 609;
-	public static int PONG_WIDTH = 602;
+	public static int PONG_HEIGHT = 552;
+	public static int PONG_WIDTH = 600;
 	
     //indicator if game started or not
 	public static boolean gameStarted=false;
@@ -243,10 +243,12 @@ public class GamesController implements Initializable{
         primaryStage.show();
 	}
 	
-	public static int totalPoints = BlockBreakerController.points + PongController.ppoints + SnakeController.snakeScore + Score.score.getValue();
+	public static int totalPoints = 0;
+	//BlockBreakerController.points + PongController.ppoints + SnakeController.snakeScore + Score.score.getValue();
 
-	public static void insertUsernameBlockBreaker(String name) throws SQLException, ClassNotFoundException{
-		String sql = "insert into users(name, BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+name+"','"+BlockBreakerController.points+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
+	public static void insertUsernameBlockBreaker() throws SQLException, ClassNotFoundException{
+		totalPoints = BlockBreakerController.points+totalPoints;
+		String sql = "insert into users(BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+BlockBreakerController.points+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
 		}
@@ -257,8 +259,9 @@ public class GamesController implements Initializable{
 		}
 	}
 	
-	public static void insertUsernameTetris(String name) throws SQLException, ClassNotFoundException{
-		String sql = "insert into users(name, TetrisScore, sumPoint, PongScore, BlockBreakerScore, SnakeScore) values('"+name+"','"+Score.score.getValue()+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
+	public static void insertUsernameTetris() throws SQLException, ClassNotFoundException{
+		totalPoints = Score.score.getValue()+totalPoints;
+		String sql = "insert into users(TetrisScore, sumPoint, PongScore, BlockBreakerScore, SnakeScore) values('"+Score.score.getValue()+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
 		}
@@ -269,8 +272,9 @@ public class GamesController implements Initializable{
 		}
 	}
 	
-	public static void insertUsernamePong(String name) throws SQLException, ClassNotFoundException{
-		String sql = "insert into users(name, PongScore, sumPoint, TetrisScore, BlockBreakerScore, SnakeScore) values('"+name+"','"+PongController.ppoints+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
+	public static void insertUsernamePong() throws SQLException, ClassNotFoundException{
+		totalPoints = PongController.ppoints+totalPoints;
+		String sql = "insert into users(PongScore, sumPoint, TetrisScore, BlockBreakerScore, SnakeScore) values('"+PongController.ppoints+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
 		}
@@ -281,8 +285,9 @@ public class GamesController implements Initializable{
 		}
 	}
 	
-	public static void insertUsernameSnake(String name) throws SQLException, ClassNotFoundException{
-		String sql = "insert into users(name, SnakeScore, sumPoint, TetrisScore, BlockBreakerScore, PongScore) values('"+name+"','"+SnakeController.snakeScore+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
+	public static void insertUsernameSnake() throws SQLException, ClassNotFoundException{
+		totalPoints = SnakeController.snakeScore+totalPoints;
+		String sql = "insert into users(SnakeScore, sumPoint, TetrisScore, BlockBreakerScore, PongScore) values('"+SnakeController.snakeScore+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
 		}

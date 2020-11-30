@@ -93,6 +93,7 @@ public class BlockBreakerController {
 
 	// Initialize - Game Launch
 	public void initialize() {
+		points = 0;
 		pointsIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
 		// Define a TimeLine animation for the ball and paddle
     	Timeline timelineAnimation = new Timeline();
@@ -410,19 +411,18 @@ public class BlockBreakerController {
 		}
 	}
 	
-	public void switchToGameMenu(ActionEvent event) {
-    	Parent gamesMenu;
-    
-		try {
-			gamesMenu = FXMLLoader.load(getClass().getResource("Games.fxml"));
-			Scene gamesMenuScene = new Scene (gamesMenu);
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			window.setScene(gamesMenuScene);
-			window.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void switchToGameMenu(ActionEvent event) throws IOException {
+		
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/Games.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent gamesMenu = fxmlLoader.load();    
+		
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		windowView.setScene(gamesMenuScene);
+		windowView.show();
 	 }
 	
 	public void switchToSavePoint(ActionEvent event) throws IOException {
@@ -439,23 +439,4 @@ public class BlockBreakerController {
 		scene4.setScene(save_point_scene);
 		scene4.show();
 	 }
-	
-//	//public static Stage window ;
-//	
-//	public void switchToDataInputBox() throws IOException{
-//		
-//		FXMLLoader fxmlLoader = new FXMLLoader();
-//		String pathToFxml = "src/main/resources/InputToDatabase.fxml";
-//		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
-//		fxmlLoader.setLocation(fxmlUrl);
-//		Parent db_page = fxmlLoader.load();
-//		
-//		Scene db_scene = new Scene(db_page);
-//		//Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//		Stage window = new Stage();
-//		window.initModality(Modality.APPLICATION_MODAL);
-//		window.setTitle("Input to Database"); 
-//		window.setScene(db_scene);
-//		window.show();
-//	}
 }

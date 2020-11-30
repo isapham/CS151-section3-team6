@@ -27,7 +27,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="424.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToSavePoint" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="EXIT GAME" textFill="WHITE">
+            <Button layoutX="424.0" layoutY="600.0" mnemonicParsing="false" onAction="#switchToSavePoint" prefHeight="40.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;" text="SAVE POINT" textFill="WHITE">
                <font>
                   <Font name="Courier New Bold" size="30.0" />
                </font>

@@ -7,22 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.PongDBController">
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.PongDBController">
    <children>
-      <Pane layoutX="-56.0" prefHeight="400.0" prefWidth="543.0">
+      <Pane prefHeight="200.0" prefWidth="300.0">
          <children>
-            <Label layoutX="160.0" layoutY="125.0" text="User Name:" />
-            <TextField fx:id="txtName" layoutX="248.0" layoutY="120.0">
-               <effect>
-                  <Blend />
-               </effect>
-            </TextField>
-            <Button layoutX="277.0" layoutY="280.0" mnemonicParsing="false" onAction="#insertUsernamePong" text="Save" />
-            <Label layoutX="157.0" layoutY="175.0" text="Game Score:" />
-            <Label layoutX="160.0" layoutY="223.0" text="Total Score:" />
-            <TextField fx:id="totalScoreTxt" disable="true" layoutX="248.0" layoutY="218.0" text="0" />
-            <Label layoutX="212.0" layoutY="75.0" text="Insert Your Name to save points!" />
-            <TextField fx:id="gameScoreTxt" disable="true" layoutX="248.0" layoutY="170.0" text="0" />
+            <Button layoutX="93.0" layoutY="159.0" mnemonicParsing="false" onAction="#switchToGameMenu" text="Exit" />
+            <Label layoutX="26.0" layoutY="71.0" text="Game Score:" />
+            <Label layoutX="28.0" layoutY="115.0" text="Total Score:" />
+            <TextField fx:id="totalScoreTxt" layoutX="111.0" layoutY="110.0" text="0" />
+            <Label layoutX="61.0" layoutY="20.0" text="Your score is saved successfully!" />
+            <TextField fx:id="gameScoreTxt" layoutX="111.0" layoutY="66.0" text="0" />
          </children>
       </Pane>
    </children>

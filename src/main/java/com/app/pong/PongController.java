@@ -145,17 +145,17 @@ public class PongController {
     }
 	
 	public void switchToGameMenu(ActionEvent event) throws IOException {
+		
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);
-		Parent gamesMenu = fxmlLoader.load();
-		    
-		Scene gamesMenuScene = new Scene (gamesMenu);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(gamesMenuScene);
-		window.show();
+		Parent gamesMenu = fxmlLoader.load();    
 		
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		windowView.setScene(gamesMenuScene);
+		windowView.show();
 	 }
 	
 	public void switchToSavePoint(ActionEvent event) throws IOException {
@@ -172,5 +172,4 @@ public class PongController {
 		scene4.setScene(save_point_scene);
 		scene4.show();
 	 }
-	
 }

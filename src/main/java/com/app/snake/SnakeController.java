@@ -28,7 +28,7 @@ import javafx.util.Duration;
 public class SnakeController {
 	//@FXML private VBox root;
 	
-	static int speed = 19;
+	static int speed = 10;
     public static int snakeScore = -1;
     public static int width = 24;
     public static int height = 22;
@@ -39,10 +39,9 @@ public class SnakeController {
     static Random random = new Random();
     public static Move direction = Move.left;
     public static List<Corner> snake = new ArrayList<>();
+    
 	@FXML private Canvas canvasSnake;
 
-
-    
     public enum Move
     {
         left,right,up,down
@@ -75,12 +74,10 @@ public class SnakeController {
 
     public void initialize() {
         GraphicsContext graphicsContext = canvasSnake.getGraphicsContext2D();
-
         start(graphicsContext);
     }
   
     public void start(GraphicsContext gc)  {
-    	
         newFood();
         new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
@@ -101,10 +98,7 @@ public class SnakeController {
             }
         }.start();
 
-        
         snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
-        
-        
     }
 
     public static void tick(GraphicsContext gc)
@@ -195,16 +189,15 @@ public class SnakeController {
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);
-		Parent gamesMenu = fxmlLoader.load();
-		    
-		Scene gamesMenuScene = new Scene (gamesMenu);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(gamesMenuScene);
-		window.show();
+		Parent gamesMenu = fxmlLoader.load();    
 		
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		windowView.setScene(gamesMenuScene);
+		windowView.show();
 	 }
-    
-    public void switchToSavePoint(ActionEvent event) throws IOException {
+	
+	public void switchToSavePoint(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/SnakeDB.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
