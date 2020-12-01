@@ -8,12 +8,14 @@ public class HiScore {
 	private IntegerProperty pongScoreProperty;
 	private IntegerProperty tetrisScoreProperty;
 	private IntegerProperty snakeScoreProperty;
+	private IntegerProperty totalScoreProperty;
 	
 	public HiScore() {
 		this.blockBreakerScoreProperty = new SimpleIntegerProperty();
 		this.pongScoreProperty = new SimpleIntegerProperty();
 		this.snakeScoreProperty = new SimpleIntegerProperty();
 		this.tetrisScoreProperty = new SimpleIntegerProperty();
+		this.totalScoreProperty = new SimpleIntegerProperty();
 	}
 	
 	//this is for block breaker game score
@@ -66,5 +68,18 @@ public class HiScore {
 	
 	public IntegerProperty getSnakeScore() {
 		return snakeScoreProperty;
+	}
+	
+	//this is for block breaker game score
+	public int getTotScore() {
+		return totalScoreProperty.get();
+	}
+	
+	public void setTotScore(int score) {
+		this.totalScoreProperty.set(score);
+	}
+	
+	public IntegerProperty getTotalScore() {
+		return totalScoreProperty;
 	}
 }

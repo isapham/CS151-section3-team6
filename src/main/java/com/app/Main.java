@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -22,7 +23,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			String pathToFxml = "src/main/resources/MainMenu.fxml";
 			URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -32,8 +32,8 @@ public class Main extends Application {
 			//BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 			Scene scene = new Scene(root,844,750);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Main Menu Homepage");
 			primaryStage.show();
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

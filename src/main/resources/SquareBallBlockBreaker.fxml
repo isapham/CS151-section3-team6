@@ -10,17 +10,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.BlockBreakerController">
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.SquareBallBlockBreakerController">
    <center>
       <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
             <Pane fx:id="pane" layoutX="119.0" layoutY="40.0" prefHeight="552.0" prefWidth="600.0" style="-fx-border-color: white;">
                <children>
-                  <Circle fx:id="ball" fill="#bcbcbc" layoutX="300.0" layoutY="493.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <Rectangle fx:id="paddle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="12.0" layoutX="231.0" layoutY="508.0" stroke="BLACK" strokeType="INSIDE" width="138.0" />
                   <GridPane fx:id="brickGrid" layoutX="5.0" layoutY="7.0" prefHeight="153.0" prefWidth="590.0">
                     <columnConstraints>
@@ -71,9 +69,10 @@
                         <Rectangle fx:id="tb6" arcHeight="5.0" arcWidth="5.0" fill="#1fd8ff" height="27.0" stroke="BLACK" strokeType="INSIDE" width="88.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
-                  <Label fx:id="messageForLose" layoutX="76.0" layoutY="318.0" prefHeight="84.0" prefWidth="456.0" textAlignment="CENTER" textFill="RED">
+                  <Rectangle fx:id="ball" fill="#bcbcbc" height="16.0" layoutX="300.0" layoutY="493.0" stroke="BLACK" strokeType="INSIDE" width="16.0" x="-15.0" y="-15.0" />
+                  <Label fx:id="messageForLose" layoutX="116.0" layoutY="354.0" prefHeight="17.0" prefWidth="387.0" textAlignment="CENTER" textFill="RED">
                      <font>
-                        <Font name="Courier New Bold" size="70.0" />
+                        <Font size="70.0" />
                      </font>
                   </Label>
                </children>

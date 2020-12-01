@@ -3,10 +3,8 @@ package main.java.com.app;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -19,16 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.com.app.blockBreaker.BlockBreakerController;
+import main.java.com.app.blockBreaker.BlockBreakerMainController;
 import main.java.com.app.pong.PongController;
 import main.java.com.app.snake.SnakeController;
 import main.java.com.app.snake.SnakeController.Move;
@@ -60,11 +55,19 @@ public class GamesController implements Initializable{
 	public static boolean goLeft = false;
 	public static boolean goRight = false;
 	public static boolean start = false;
+	public static int ballShape = 0; //round ball = 0, square ball = 1; triangle ball = 2
 	
     //create scene to begin game
 	public void switchToBlockBreaker(ActionEvent event)throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		String pathToFxml = "src/main/resources/BlockBreaker.fxml";
+		String pathToFxml = "";
+		
+		if (ballShape==1) {
+			pathToFxml = "src/main/resources/SquareBallBlockBreaker.fxml";
+		} else {
+			pathToFxml = "src/main/resources/BlockBreaker.fxml";
+		}
+		
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);
 		Parent block_breaker_page = fxmlLoader.load();
@@ -137,10 +140,17 @@ public class GamesController implements Initializable{
     //player's paddle initial location (note that paddle movement is only up and down):
 	public static double playerPaddleYPos = PONG_HEIGHT/2;
 	public static double compPaddleYPos = PONG_HEIGHT/2;
+	public static boolean circleBall = true; // 0 = round
 	
 	public void switchToPong(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		String pathToFxml = "src/main/resources/Pong.fxml";
+		String pathToFxml ="";
+		if (circleBall==true) {
+			pathToFxml = "src/main/resources/Pong.fxml";
+		} else {
+			pathToFxml = "src/main/resources/PongSquare.fxml";
+		}
+		
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);
 		Parent pong_page = fxmlLoader.load();
@@ -170,6 +180,7 @@ public class GamesController implements Initializable{
 		scene4.show();
 	}
 	
+	@FXML
 	public void switchToTetris(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Tetris.fxml";
@@ -186,21 +197,24 @@ public class GamesController implements Initializable{
         new TetrisController(c);
 	}
 	
+	//Switch to SnakeGame button
+	public static boolean fruitRoundShape = true; //true=round, false=square
+	@FXML
 	public void switchToSnake(ActionEvent event) throws IOException{
-        //SnakeController snakeGame = new SnakeController();
-        //snakeGame.start();
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		String pathToFxml = "src/main/resources/Snake.fxml";
+		String pathToFxml = "";
+		
+		if (fruitRoundShape==true) {
+			pathToFxml = "src/main/resources/SnakeCircleFruit.fxml";
+		} else {
+			pathToFxml = "src/main/resources/SnakeRectangleFruit.fxml";
+		}
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);
 		Parent snake_page = fxmlLoader.load();
     	
     	Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	
-        
-  
-        
-        Scene scene = new Scene(snake_page);
+    	Scene scene = new Scene(snake_page);
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->      					 //controls for the snake on keyboard (snake cannot reverse direction)
         {
             if(key.getCode() == KeyCode.UP && SnakeController.direction != Move.down) 	//if up key is pressed AND the snake is not moving down
@@ -227,22 +241,22 @@ public class GamesController implements Initializable{
             }
             */                  
             
-            if(key.getCode() == KeyCode.SPACE)
-            {
-            	//primaryStage.close();									//closes application
-            	SnakeController.gameOver = false;										//reset game variables
-            	SnakeController.direction = Move.left;				
-            	SnakeController.snakeScore = -1;
-            	SnakeController.newFood();
-            	SnakeController.snake.clear();
-            	SnakeController.snake.add(new SnakeController.Corner(SnakeController.width / 2, SnakeController.height / 2));                    	
-            	primaryStage.show();
-            }
+//            if(key.getCode() == KeyCode.SPACE)
+//            {
+//            	//primaryStage.close();									//closes application
+//            	SnakeController.gameOver = false;										//reset game variables
+//            	SnakeController.direction = Move.left;				
+//            	SnakeController.snakeScore = -1;
+//            	SnakeController.newFood();
+//            	SnakeController.snake.clear();
+//            	SnakeController.snake.add(new SnakeController.Corner(SnakeController.width / 2, SnakeController.height / 2));                    	
+//            	primaryStage.show();
+//            }
         }
         );
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Snake");
+        primaryStage.setTitle("Snake Game");
         primaryStage.show();
 	}
 	
@@ -250,7 +264,7 @@ public class GamesController implements Initializable{
 	//BlockBreakerController.points + PongController.ppoints + SnakeController.snakeScore + Score.score.getValue();
 
 	public static void insertUsernameBlockBreaker() throws SQLException, ClassNotFoundException{
-		totalPoints = BlockBreakerController.points+totalPoints;
+		totalPoints = BlockBreakerMainController.points+totalPoints;
 		String sql = "insert into users(BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+BlockBreakerController.points+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
@@ -291,6 +305,18 @@ public class GamesController implements Initializable{
 	public static void insertUsernameSnake() throws SQLException, ClassNotFoundException{
 		totalPoints = SnakeController.snakeScore+totalPoints;
 		String sql = "insert into users(SnakeScore, sumPoint, TetrisScore, BlockBreakerScore, PongScore) values('"+SnakeController.snakeScore+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
+		try {
+			ConnectionClass.dbExecuteQuery(sql);
+		}
+		catch(SQLException e) {
+			System.out.println("Exception occur while inserting the data "+e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	public static void insertTotalScore() throws SQLException, ClassNotFoundException{
+		String sql = "insert into users(BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+0+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
 		try {
 			ConnectionClass.dbExecuteQuery(sql);
 		}

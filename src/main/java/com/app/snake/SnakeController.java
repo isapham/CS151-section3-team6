@@ -73,11 +73,18 @@ public class SnakeController {
     }
 
     public void initialize() {
-        GraphicsContext graphicsContext = canvasSnake.getGraphicsContext2D();
-        start(graphicsContext);
+    	GraphicsContext gc = canvasSnake.getGraphicsContext2D();
+		Timeline t1 = new Timeline();
+		start(gc);
+		t1.setCycleCount(Timeline.INDEFINITE);
+		t1.play();
+//        GraphicsContext graphicsContext = canvasSnake.getGraphicsContext2D();
+//        start(graphicsContext);
     }
   
     public void start(GraphicsContext gc)  {
+    	
+    	snakeScore=-1;
         newFood();
         new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
@@ -96,22 +103,25 @@ public class SnakeController {
                     tick(gc);
                 }
             }
+            
+            
         }.start();
 
         snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
     }
 
-    public static void tick(GraphicsContext gc)
+    protected void tick(GraphicsContext gc)
     {
-        if(gameOver)                                            //game over screen
+    	if(gameOver)                                            //game over screen
         {
             gc.setFill(Color.RED);                 //font color of game over text
             gc.setFont(new Font("", 50));          //font size
             gc.fillText("GAME OVER", 100, 250);    //Display text at x, y position
             
-            gc.setFill(Color.WHITE);                 //font color of game over text
-            gc.setFont(new Font("", 20));          //font size
-            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
+            //assume user will exit game and reenter the game
+//            gc.setFill(Color.WHITE);                 //font color of game over text
+//            gc.setFont(new Font("", 20));          //font size
+//            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
             return;
         }
 
@@ -184,6 +194,7 @@ public class SnakeController {
         }
     }
     
+    @FXML
     public void switchToGameMenu(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
@@ -197,6 +208,7 @@ public class SnakeController {
 		windowView.show();
 	 }
 	
+    @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/SnakeDB.fxml";

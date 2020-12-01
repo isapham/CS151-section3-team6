@@ -32,6 +32,7 @@ public class HiScoreController {
 		colTetrisScore.setCellValueFactory(cellData -> cellData.getValue().getTetrisScore().asObject());
 		colSnakeScore.setCellValueFactory(cellData -> cellData.getValue().getSnakeScore().asObject());
 		colPongScore.setCellValueFactory(cellData -> cellData.getValue().getPongScore().asObject());
+		
 		ObservableList<HiScore> list1 =GamesController.getPongRecords();
 		pongTable.setItems(list1);
 		

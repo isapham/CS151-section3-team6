@@ -31,9 +31,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.com.app.GamesController;
 
-public class BlockBreakerController extends BlockBreakerMainController{
-	//blockbreaker.fxml
-	@FXML private Circle ball;
+public class SquareBallBlockBreakerController extends BlockBreakerMainController{
+
+	
+	//blockbreaker2.fxml
+	@FXML private Rectangle ball;
 
 	@FXML private Pane pane;
 	@FXML private GridPane brickGrid;
@@ -87,7 +89,7 @@ public class BlockBreakerController extends BlockBreakerMainController{
     @FXML private Rectangle rb1;
 
 	// Game variables
-    
+    //public static Integer points = 0;
     
 	// Random for ball bouncing
 	SecureRandom random = new SecureRandom();
@@ -140,7 +142,7 @@ public class BlockBreakerController extends BlockBreakerMainController{
     			}
     			
     			// if the ball hits the bottom, user lose
-    			if (ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) {
+    			if (ball.getLayoutY() >= (bounds.getMaxY() - 16)) { //16 is ball width and length
     				timelineAnimation.pause();
     				messageForLose.setText("You Lost!");
     			}
@@ -186,13 +188,13 @@ public class BlockBreakerController extends BlockBreakerMainController{
 	
 	// Determines whether the ball hit the left or right of the window
 	private boolean hitRightOrLeftEdge(Bounds bounds) {
-		return (ball.getLayoutX() <= (bounds.getMinX() + ball.getRadius())) ||
-				(ball.getLayoutX() >= (bounds.getMaxX() - ball.getRadius()));
+		return (ball.getLayoutX() <= (bounds.getMinX() + 16) ||
+				(ball.getLayoutX() >= (bounds.getMaxX() - 16)));
 	}
 
 	// Determines whether the ball hit the top or bottom of the window
 	private boolean hitTop(Bounds bounds) {
-		return (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius())) ;
+		return (ball.getLayoutY() <= (bounds.getMinY() + 16)) ;
 				
 	}
 	
@@ -412,7 +414,6 @@ public class BlockBreakerController extends BlockBreakerMainController{
 			return false;
 		}
 	}
-	
 	
 
 }
