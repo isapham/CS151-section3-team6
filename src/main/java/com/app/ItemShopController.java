@@ -34,7 +34,7 @@ public class ItemShopController implements Initializable{
 	//initialize images
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		storeIcon.setImage(new Image("/main/java/com/app/cs151GameShopIcon.png"));
+		storeIcon.setImage(new Image("/main/resources/cs151GameShopIcon.png"));
 	}
 	
 	//switches back to menu
@@ -42,7 +42,7 @@ public class ItemShopController implements Initializable{
 	    	Parent mainMenu;
 	    
 			try {
-				mainMenu = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+				mainMenu = FXMLLoader.load(getClass().getResource("/main/resources/MainMenu.fxml"));
 				Scene mainMenuScene = new Scene (mainMenu);
 				Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				windowView.setScene(mainMenuScene);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.SettingsController">
+	<center>
+		<Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+		<children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="18.0" layoutY="43.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);" width="800.0" />
+      		<Button alignment="CENTER" contentDisplay="CENTER" layoutX="317.0" layoutY="538.0" mnemonicParsing="false" onAction="#switchToMainMenu" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-radius: 20;" text="MAIN MENU" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="299.0" layoutY="63.0" prefHeight="34.0" prefWidth="246.0" text="COLOR BLIND MODE" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="23.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="22.0" layoutY="314.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);" width="800.0" />
+            <Label layoutX="306.0" layoutY="271.0" text="HOW TO PLAY" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="332.0" text="TETRIS" textFill="WHITE" />
+            <Label layoutX="264.0" layoutY="332.0" text="PONG" textFill="WHITE" />
+            <Label layoutX="484.0" layoutY="332.0" text="SNAKE" textFill="WHITE" />
+            <Label layoutX="702.0" layoutY="332.0" text="BLOCKBREAKER" textFill="WHITE" />
+            <ToggleButton fx:id="toggle" contentDisplay="CENTER" layoutX="384.0" layoutY="97.0" mnemonicParsing="false" onAction="#colorBlindMode" text="ENABLE" />
+		</children>
+		</Pane>
+	</center>
+	<top>
+      <Pane prefHeight="69.0" prefWidth="844.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+      		<Label layoutX="251.0" layoutY="-9.0" prefHeight="87.0" prefWidth="384.0" text="SETTINGS" textFill="WHITE">
+      			<font>
+      				<Font name="Courier New Bold" size="72.0" />
+      			</font>
+      		</Label>
+            <ImageView fx:id="gearIcon" fitHeight="60.0" fitWidth="94.0" layoutX="164.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cs151GameGearIconThing.png" />
+               </image></ImageView>
+            <ImageView fx:id="gearIcon" fitHeight="60.0" fitWidth="94.0" layoutX="625.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cs151GameGearIconThing.png" />
+               </image></ImageView>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -25,26 +27,63 @@ import main.java.com.app.snake.SnakeController;
 import main.java.com.app.tetris.TetrisController;
 import main.java.com.app.tetris.gui.GuiController;
 import javafx.scene.control.CheckBox;
+
 import java.io.File;
+import main.java.com.app.blockBreaker.BlockBreakerController;
+import main.java.com.app.pong.PongController;
+import main.java.com.app.snake.SnakeController;
+import main.java.com.app.snake.SnakeController.Move;
+import main.java.com.app.tetris.TetrisController;
+import main.java.com.app.tetris.gui.GuiController;
+import main.java.com.app.tetris.logic.Score;
 
 public class SettingsController implements Initializable{
 	@FXML  CheckBox check1;
 	@FXML  ImageView gearIcon;
+	@FXML  ToggleButton toggle;
+	private final String enabled = "ENABLED";
+	private final String disabled = "DISABLED";
+	
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		gearIcon.setImage(new Image("/main/java/com/app/cs151GameGearIconThing.png"));
+		gearIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
+		
 	}
 
 
 	
 	@FXML
-	public void colorBlindMode(ActionEvent event) {
-		CheckBox cb1 = new CheckBox("COLOR BLIND MODE");
-		cb1.setSelected(false);
+	public void colorBlindMode(ActionEvent event) throws IOException {
+		if(toggle.isSelected()) {
+			
+			
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			String pathToFxml = "src/main/resources/ColorBlindGames.fxml";
+			URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+			fxmlLoader.setLocation(fxmlUrl);
+			Parent home_page_parent = fxmlLoader.load();
+			
+			Scene home_page_scene = new Scene(home_page_parent,844,750);
+			Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			scene2.setScene(home_page_scene);
+			scene2.show();
+			
+			
+		}else {
+			toggle.setText(disabled);
+			
+		}
+		
+		
+		
+		
 	}
+
+
 	
-	
+
 
 	
 
@@ -53,7 +92,7 @@ public class SettingsController implements Initializable{
     	Parent mainMenu;
     
 		try {
-			mainMenu = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+			mainMenu = FXMLLoader.load(getClass().getResource("/main/resources/MainMenu.fxml"));
 			Scene mainMenuScene = new Scene (mainMenu);
 			Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			windowView.setScene(mainMenuScene);

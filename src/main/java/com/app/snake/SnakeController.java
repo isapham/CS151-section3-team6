@@ -1,9 +1,19 @@
 package main.java.com.app.snake;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,19 +23,24 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class SnakeController {
+	//@FXML private VBox root;
+	
 	static int speed = 10;
-    static int score = -1;
-    static int width = 20;
-    static int height = 20;
+    public static int snakeScore = -1;
+    public static int width = 24;
+    public static int height = 22;
     static int cornerSize = 25;
     static int foodX = 0;
     static int foodY = 0;
-    static boolean gameOver = false;
+    public static boolean gameOver = false;
     static Random random = new Random();
-    static Move direction = Move.left;
-    static List<Corner> snake = new ArrayList<>();
+    public static Move direction = Move.left;
+    public static List<Corner> snake = new ArrayList<>();
+    
+	@FXML private Canvas canvasSnake;
 
     public enum Move
     {
@@ -44,35 +59,26 @@ public class SnakeController {
         }
     }
 
-    public static void newFood()    //function for spawning food at random coordinates
-    {
-        while(true)
-        {
+    public static void newFood() {   //function for spawning food at random coordinates
+        while(true){
             foodX = random.nextInt(width);
             foodY = random.nextInt(height);
 
-            for(Corner canvas : snake)
-            {
-                if(canvas.x == foodX && canvas.y == foodY)
-                {
-                    continue;
-                }
+            for(Corner canvas : snake){
+                if(canvas.x == foodX && canvas.y == foodY){continue;}
             }
-            score++;
+            snakeScore++;
             break;
         }
     }
 
-    
-    public void start() 
-    {
-    	Stage primaryStage = new Stage();
+    public void initialize() {
+        GraphicsContext graphicsContext = canvasSnake.getGraphicsContext2D();
+        start(graphicsContext);
+    }
+  
+    public void start(GraphicsContext gc)  {
         newFood();
-        VBox root = new VBox();
-        Canvas canvas = new Canvas(width * cornerSize, height * cornerSize);
-        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
-        root.getChildren().add(canvas);
-        
         new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
             long lastTick = 0;
@@ -82,76 +88,30 @@ public class SnakeController {
                 if(lastTick == 0)
                 {
                     lastTick = now;
-                    tick(graphicsContext);
+                    tick(gc);
                 }
                 if(now - lastTick > 999999999/speed)
                 {
                     lastTick = now;
-                    tick(graphicsContext);
+                    tick(gc);
                 }
             }
         }.start();
 
-        Scene scene = new Scene(root, width * cornerSize, height * cornerSize);
-
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->      					 //controls for the snake on keyboard (snake cannot reverse direction)
-                {
-                    if(key.getCode() == KeyCode.UP && direction != Move.down) 	//if up key is pressed AND the snake is not moving down
-                    {
-                        direction = Move.up;									//move up	
-                    }
-                    if(key.getCode() == KeyCode.DOWN && direction != Move.up)	//if down key is pressed AND the snake is not moving up
-                    {
-                        direction = Move.down;									//move down
-                    }
-                    if(key.getCode() == KeyCode.LEFT && direction != Move.right)//if left key is pressed AND the snake is not moving right
-                    {
-                        direction = Move.left;									//move left
-                    }                 
-                    if(key.getCode() == KeyCode.RIGHT && direction != Move.left)//if right key is pressed AND the snake is not moving left
-                    {
-                        direction = Move.right;									//move right
-                    }
-                    
-                    /* escape key for pause menu
-                    if(key.getCode() == KeyCode.ESCAPE)
-                    {
-                    	
-                    }
-                    */                  
-                    
-                    if(key.getCode() == KeyCode.SPACE)
-                    {
-                    	//primaryStage.close();									//closes application
-                    	gameOver = false;										//reset game variables
-                    	direction = Move.left;				
-                    	score = -1;
-                    	newFood();
-                    	snake.clear();
-                    	snake.add(new Corner(width / 2, height / 2));                    	
-                    	primaryStage.show();
-                    }
-                }
-                );
-
         snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
-        
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Snake");
-        primaryStage.show();
     }
 
-    public static void tick(GraphicsContext graphicsContext)
+    public static void tick(GraphicsContext gc)
     {
         if(gameOver)                                            //game over screen
         {
-            graphicsContext.setFill(Color.RED);                 //font color of game over text
-            graphicsContext.setFont(new Font("", 50));          //font size
-            graphicsContext.fillText("GAME OVER", 100, 250);    //Display text at x, y position
+            gc.setFill(Color.RED);                 //font color of game over text
+            gc.setFont(new Font("", 50));          //font size
+            gc.fillText("GAME OVER", 100, 250);    //Display text at x, y position
             
-            graphicsContext.setFill(Color.WHITE);                 //font color of game over text
-            graphicsContext.setFont(new Font("", 20));          //font size
-            graphicsContext.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
+            gc.setFill(Color.WHITE);                 //font color of game over text
+            gc.setFont(new Font("", 20));          //font size
+            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
             return;
         }
 
@@ -196,36 +156,59 @@ public class SnakeController {
                 break;
         }
 
-        if(foodX == snake.get(0).x && foodY == snake.get(0).y)  //snake eats food
-        {
+        if(foodX == snake.get(0).x && foodY == snake.get(0).y){  //snake eats food
             snake.add(new Corner(-1, -1));                      //add a body part to end of snake
             newFood();                                          //spawn a new food randomly on map
         }
 
-        for(int i = 1; i < snake.size(); i++)                   //if snake makes contact with its own body
-        {
-            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y)
-            {
+        for(int i = 1; i < snake.size(); i++){                   //if snake makes contact with its own body
+            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y){
                 gameOver = true;
             }
         }
 
-        graphicsContext.setFill(Color.BLACK);                                                       //game background color
-        graphicsContext.fillRect(0, 0, width * cornerSize, height * cornerSize);                    //game display resolution
+        gc.setFill(Color.BLACK);                                                       //game background color
+        gc.fillRect(0, 0, width * cornerSize, height * cornerSize);                    //game display resolution
         
-        graphicsContext.setFill(Color.WHITE);                                                       //game score text color
-        graphicsContext.setFont(new Font("", 20));                                                  //game score font size
-        graphicsContext.fillText("Score: " + score, 10, 20);                                 	//game score at position
+        gc.setFill(Color.WHITE);                                                       //game score text color
+        gc.setFont(new Font("", 20));                                                  //game score font size
+        gc.fillText("Score: " + snakeScore, 10, 20);                                 	//game score at position
         
         Color foodColor = Color.RED;                                                                //food color
-        graphicsContext.setFill(foodColor);                                                         //fill food with food color
-        graphicsContext.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        gc.setFill(foodColor);                                                         //fill food with food color
+        gc.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
 
-        for(Corner canvas : snake)
-        {
-            graphicsContext.setFill(Color.LIGHTGREEN);                                              //color of snake
-            graphicsContext.fillRect(canvas.x * cornerSize, canvas.y * cornerSize, cornerSize - 1, cornerSize - 1); //shape of snake
+        for(Corner canvas : snake){
+            gc.setFill(Color.LIGHTGREEN);                                              //color of snake
+            gc.fillRect(canvas.x * cornerSize, canvas.y * cornerSize, cornerSize - 1, cornerSize - 1); //shape of snake
         }
-  
     }
+    
+    public void switchToGameMenu(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/Games.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent gamesMenu = fxmlLoader.load();    
+		
+		Scene gamesMenuScene = new Scene (gamesMenu);
+		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		windowView.setScene(gamesMenuScene);
+		windowView.show();
+	 }
+	
+	public void switchToSavePoint(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/SnakeDB.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent save_point_page = fxmlLoader.load();
+
+		Scene save_point_scene = new Scene(save_point_page);
+		Stage scene4 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		
+		scene4.setTitle("Save Point to DB"); 
+		scene4.setScene(save_point_scene);
+		scene4.show();
+	 }
 }

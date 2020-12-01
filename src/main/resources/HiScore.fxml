@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="844.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.HiScoreController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="330.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToMainMenu" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-radius: 20;" text="MAIN MENU" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="40.0" prefHeight="220.0" prefWidth="340.0" style="-fx-border-color: white;">
+               <children>
+                  <TableView fx:id="pongTable" prefHeight="219.0" prefWidth="339.0">
+                    <columns>
+                      <TableColumn prefWidth="62.0" text="ID" />
+                      <TableColumn fx:id="colPongScore" prefWidth="276.0" text="PONG" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane layoutX="40.0" layoutY="250.0" prefHeight="220.0" prefWidth="340.0" style="-fx-border-color: white;">
+               <children>
+                  <TableView fx:id="blockBreakerTable" prefHeight="219.0" prefWidth="339.0">
+                     <columns>
+                        <TableColumn prefWidth="62.0" text="ID" />
+                        <TableColumn fx:id="colBlockBreakerScore" prefWidth="276.0" text="BLOCK BREAKER" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane layoutX="450.0" prefHeight="220.0" prefWidth="340.0" style="-fx-border-color: white;">
+               <children>
+                  <TableView fx:id="tetrisTable" prefHeight="219.0" prefWidth="339.0">
+                     <columns>
+                        <TableColumn prefWidth="62.0" text="ID" />
+                        <TableColumn fx:id="colTetrisScore" prefWidth="276.0" text="TETRIS" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane layoutX="450.0" layoutY="250.0" prefHeight="220.0" prefWidth="340.0" style="-fx-border-color: white;">
+               <children>
+                  <TableView fx:id="snakeTable" prefHeight="219.0" prefWidth="339.0">
+                     <columns>
+                        <TableColumn prefWidth="62.0" text="ID" />
+                        <TableColumn fx:id="colSnakeScore" prefWidth="276.0" text="SNAKE" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children></Pane>
+   </center>
+   <top>
+      <Pane prefHeight="150.0" prefWidth="844.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="241.0" layoutY="30.0" text="HI-SCORES" textFill="WHITE">
+               <font>
+                  <Font name="Courier New Bold" size="70.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="hiScoreIcon1" fitHeight="89.0" fitWidth="89.0" layoutX="132.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="hiScoreIcon2" fitHeight="89.0" fitWidth="89.0" layoutX="642.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
