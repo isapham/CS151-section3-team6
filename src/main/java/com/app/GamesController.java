@@ -233,25 +233,17 @@ public class GamesController implements Initializable{
             {
             	SnakeController.direction = Move.right;									//move right
             }
+           
             
-            /* escape key for pause menu
-            if(key.getCode() == KeyCode.ESCAPE)
+            if(key.getCode() == KeyCode.R)
             {
-            	
+            	SnakeController.gameOver = false;										//reset game variables
+            	SnakeController.direction = Move.left;				
+            	SnakeController.snakeScore = -1;
+            	SnakeController.newFood();
+            	SnakeController.snake.clear();
+            	SnakeController.snake.add(new SnakeController.Corner(SnakeController.width / 2, SnakeController.height / 2));                    	
             }
-            */                  
-            
-//            if(key.getCode() == KeyCode.SPACE)
-//            {
-//            	//primaryStage.close();									//closes application
-//            	SnakeController.gameOver = false;										//reset game variables
-//            	SnakeController.direction = Move.left;				
-//            	SnakeController.snakeScore = -1;
-//            	SnakeController.newFood();
-//            	SnakeController.snake.clear();
-//            	SnakeController.snake.add(new SnakeController.Corner(SnakeController.width / 2, SnakeController.height / 2));                    	
-//            	primaryStage.show();
-//            }
         }
         );
 
