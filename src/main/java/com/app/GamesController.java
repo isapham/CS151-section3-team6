@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -32,15 +33,14 @@ import main.java.com.app.tetris.gui.GuiController;
 import main.java.com.app.tetris.logic.Score;
 
 public class GamesController implements Initializable{
-
+	//set image for buttons
+	@FXML TextField totalScore;
 	@FXML  ImageView pongIcon;
 	@FXML  ImageView snakeIcon;
 	@FXML  ImageView blockBreakerIcon;
 	@FXML  ImageView tetrisIcon;
 	@FXML  ImageView controllerIcon;
 	@FXML  ImageView pointIcon;
-	
-	//set image for buttons
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
 		controllerIcon.setImage(new Image("/main/resources/cs151GameConsoleIcon.png"));
@@ -49,13 +49,15 @@ public class GamesController implements Initializable{
 		blockBreakerIcon.setImage(new Image("/main/resources/cs151GameGalBlockBreakerIcon.png"));
 		tetrisIcon.setImage(new Image("/main/resources/cs151GameGalTetrisIcon.png"));
 		pointIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
+		totalScore.setStyle("-fx-text-fill: white; -fx-background-color: black");
+		totalScore.setText(Integer.toString(totalPoints));
 	}
 	
 	//instances for block breaker
 	public static boolean goLeft = false;
 	public static boolean goRight = false;
 	public static boolean start = false;
-	public static int ballShape = 0; //round ball = 0, square ball = 1; triangle ball = 2
+	public static int ballShape = 0; //round ball = 0, square ball = 1
 	
     //create scene to begin game
 	public void switchToBlockBreaker(ActionEvent event)throws IOException {
@@ -214,7 +216,7 @@ public class GamesController implements Initializable{
 		Parent snake_page = fxmlLoader.load();
     	
     	Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	Scene scene = new Scene(snake_page);
+    	Scene scene = new Scene(snake_page,844,750);
         scene.addEventFilter(KeyEvent.KEY_PRESSED, key ->      					 //controls for the snake on keyboard (snake cannot reverse direction)
         {
             if(key.getCode() == KeyCode.UP && SnakeController.direction != Move.down) 	//if up key is pressed AND the snake is not moving down
@@ -234,7 +236,6 @@ public class GamesController implements Initializable{
             	SnakeController.direction = Move.right;									//move right
             }
            
-            
             if(key.getCode() == KeyCode.R)
             {
             	SnakeController.gameOver = false;										//reset game variables

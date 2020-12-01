@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.BlockBreakerController">
+   <center>
+      <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <Pane prefHeight="71.0" prefWidth="779.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="pointsTextField" alignment="TOP_LEFT" focusTraversable="false" layoutX="600.0" layoutY="30.0" prefHeight="56.0" prefWidth="200.0" style="-fx-background-color: black;" text="0">
+               <font>
+                  <Font name="Courier New Bold" size="30.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="30.0" prefHeight="41.0" prefWidth="300.0" text="BLOCK BREAKER" textFill="WHITE">
+               <font>
+                  <Font name="American Typewriter" size="33.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="pointsIcon" fitHeight="50.0" fitWidth="50.0" layoutX="535.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <Pane prefHeight="679.0" prefWidth="126.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="679.0" prefWidth="162.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

@@ -27,9 +27,6 @@
 	xmlns:fx="http://javafx.com/fxml/1">
 	<center>
 		<Pane layoutX="110.0" BorderPane.alignment="CENTER">
-			<effect>
-                  <InnerShadow color="WHITE" />
-            </effect>
 			<GridPane fx:id="brickPanel" vgap="1" hgap="1" />
 			<BorderPane styleClass="gameBoard" fx:id="gameBoard" >
 				<center>
@@ -79,7 +76,7 @@
 				</VBox>
 			</VBox>
 			
-			<Button layoutX="140.0" layoutY="613.0"
+			<Button layoutX="0.0" layoutY="550.0"
 				mnemonicParsing="false" onAction="#switchToGameMenu"
 				prefHeight="40.0" prefWidth="255.0"
 				style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;"
@@ -92,7 +89,7 @@
 				</cursor>
 			</Button>
 			
-			<Button layoutX="424.0" layoutY="613.0"
+			<Button layoutX="280.0" layoutY="550.0"
 				mnemonicParsing="false" onAction="#switchToSavePoint"
 				prefHeight="40.0" prefWidth="255.0"
 				style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 20;"
@@ -116,25 +113,22 @@
 		</Pane>
 	</center>
 	<top>
-		<Pane prefHeight="83.0" prefWidth="844.0"
+		<Pane prefHeight="130.0" prefWidth="844.0"
 			BorderPane.alignment="CENTER">
 			<children>
-				<Label layoutX="120.0" text="TeTris" textFill="WHITE">
+				<Label layoutX="150.0" text="TeTris" textFill="WHITE">
 					<font>
 						<Font name="Courier New Bold" size="70.0" />
 					</font>
 				</Label>
-				<TextField fx:id="playerScoreTextField" layoutX="501.0"
-					layoutY="21.0" style="-fx-background-color: black;" text="0">
-					<font>
-						<Font name="Courier New Bold" size="30.0" />
-					</font>
-				</TextField>
-				<ImageView fx:id="playerPointIcon" fitHeight="50.0"
-					fitWidth="50.0" layoutX="428.0" layoutY="24.0" pickOnBounds="true"
-					preserveRatio="true" />
 			</children>
 		</Pane>
 	</top>
+	<left>
+      <Pane prefHeight="679.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="679.0" prefWidth="162.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
 

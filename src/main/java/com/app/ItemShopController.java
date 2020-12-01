@@ -65,30 +65,76 @@ public class ItemShopController implements Initializable{
 		windowView.show();
     }
 
+	//non-action function
+	public void switchToMainMenu() throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		String pathToFxml = "src/main/resources/MainMenu.fxml";
+		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
+		fxmlLoader.setLocation(fxmlUrl);
+		Parent main_menu_page = fxmlLoader.load();    
+		
+		Scene mainMenuScene = new Scene (main_menu_page);
+		Stage windowView = new Stage();
+		windowView.setScene(mainMenuScene);
+		windowView.setTitle("Main Menu Homepage");
+		windowView.show();
+    }
+	
 	//points trade-off function for BlockBreaker
 	@FXML
-	public void changeToSquareBall(ActionEvent event) {
+	public void changeToSquareBall(ActionEvent event) throws IOException {
 		GamesController.ballShape = 1; 
 		GamesController.totalPoints = GamesController.totalPoints - 30;
+		switchToMainMenu();
 	}
 	
 	//points trade-off function for Pong
 	@FXML
-	public void changeToSquarePongBall(ActionEvent event) {
+	public void changeToSquarePongBall(ActionEvent event) throws IOException {
 		GamesController.circleBall = false; 
 		GamesController.totalPoints = GamesController.totalPoints - 10;
+		switchToMainMenu();
 	}
 	
 	//points trade-off function for Snake
 	@FXML
-	public void changeFruitToTriangle(ActionEvent event) {
+	public void changeFruitToTriangle(ActionEvent event) throws IOException {
 		GamesController.fruitRoundShape = false; 
 		GamesController.totalPoints = GamesController.totalPoints - 40;
+		switchToMainMenu();
 	}
 	
+	//points trade-off function for Tetris
 	@FXML
 	public void changeToTetrisEffect(ActionEvent event) {
 		
+	}
+	
+	//switch back to round shape ball (Pong)
+	@FXML 
+	public void switchToOGPong (ActionEvent event) throws IOException {
+		GamesController.circleBall = true; 
+		switchToMainMenu();
+	}
+	
+	//switch back ... (Tetris)
+	@FXML 
+	public void switchToOGTetris (ActionEvent event) {
+		
+	}
+	
+	//switch back to round shape ball (BlockBreaker)
+	@FXML 
+	public void switchToOGBlockBreaker (ActionEvent event) throws IOException {
+		GamesController.ballShape = 0;
+		switchToMainMenu();
+	}
+	
+	//switch back to round shape fruit (Snake)
+	@FXML 
+	public void switchToOGSnake (ActionEvent event) throws IOException {
+		GamesController.fruitRoundShape = true; 
+		switchToMainMenu();
 	}
 	
 //	public static ObservableList<HiScore> getTotalScoreRecords() throws ClassNotFoundException, SQLException{

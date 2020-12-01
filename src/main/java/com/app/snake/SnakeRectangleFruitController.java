@@ -2,12 +2,13 @@ package main.java.com.app.snake;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import main.java.com.app.snake.SnakeController.Corner;
 
 public class SnakeRectangleFruitController extends SnakeController{
 	@Override
-	public void tick(GraphicsContext gc)
+	protected void tick(GraphicsContext gc)
     {
-        if(gameOver)                                            //game over screen
+    	if(gameOver)                                            //game over screen
         {
             gc.setFill(Color.RED);                 //font color of game over text
             gc.setFont(new Font("", 50));          //font size
@@ -16,7 +17,12 @@ public class SnakeRectangleFruitController extends SnakeController{
             //assume user will exit game and reenter the game
 //            gc.setFill(Color.WHITE);                 //font color of game over text
 //            gc.setFont(new Font("", 20));          //font size
-//            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
+//            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position     
+	
+		
+            gc.setFill(Color.WHITE);                 //font color of game over text
+            gc.setFont(new Font("", 20));          //font size
+            gc.fillText("Press the R key to retry", 125, 275);    //Display text at x, y position                       
             return;
         }
 
@@ -82,7 +88,6 @@ public class SnakeRectangleFruitController extends SnakeController{
         Color foodColor = Color.RED;                                                                //food color
         gc.setFill(foodColor);                                                         //fill food with food color
         gc.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
-
 
         for(Corner canvas : snake){
             gc.setFill(Color.LIGHTGREEN);                                              //color of snake

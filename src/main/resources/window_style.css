@@ -1,6 +1,6 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .root {
-    -fx-background-image: url("/app/background_image.png");
+    -fx-background-image: url("/src/main/resources/tetris_background.png");
 }
 
 .nextBrick {
