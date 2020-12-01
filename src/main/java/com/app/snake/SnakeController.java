@@ -86,28 +86,33 @@ public class SnakeController {
     	
     	snakeScore=-1;
         newFood();
-        new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
+        AnimationTimer timer = new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
         {
             long lastTick = 0;
             @Override
-            public void handle(long now)
+            public void handle(long currentTick)
             {
-                if(lastTick == 0)
-                {
-                    lastTick = now;
+            	if(lastTick == 0)
+            	{
+            		lastTick = currentTick;
                     tick(gc);
+                    return;
                 }
-                if(now - lastTick > 999999999/speed)
+                if(currentTick - lastTick > 999999999/speed)
                 {
-                    lastTick = now;
+                	lastTick = currentTick;
                     tick(gc);
                 }
             }
-            
-            
-        }.start();
+        };
+        timer.start();
+        if(gameOver)
+        {
+        	timer.stop();
+        	timer.start();	
+        }
 
-        snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts at start of game
+        snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
     }
 
     protected void tick(GraphicsContext gc)
@@ -121,7 +126,12 @@ public class SnakeController {
             //assume user will exit game and reenter the game
 //            gc.setFill(Color.WHITE);                 //font color of game over text
 //            gc.setFont(new Font("", 20));          //font size
-//            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position                       
+//            gc.fillText("Press SPACEBAR to retry", 125, 275);    //Display text at x, y position     
+	
+		
+            gc.setFill(Color.WHITE);                 //font color of game over text
+            gc.setFont(new Font("", 20));          //font size
+            gc.fillText("Press the R key to retry", 125, 275);    //Display text at x, y position                       
             return;
         }
 
@@ -186,7 +196,7 @@ public class SnakeController {
         
         Color foodColor = Color.RED;                                                                //food color
         gc.setFill(foodColor);                                                         //fill food with food color
-        gc.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        gc.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
 
         for(Corner canvas : snake){
             gc.setFill(Color.LIGHTGREEN);                                              //color of snake
