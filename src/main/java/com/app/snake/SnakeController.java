@@ -68,47 +68,23 @@ public class SnakeController {
         }
     }
 
-    public void initialize() {
+    public void initialize() 
+    {
     	GraphicsContext gc = canvasSnake.getGraphicsContext2D();
-		Timeline t1 = new Timeline();
-		start(gc);
-		t1.setCycleCount(Timeline.INDEFINITE);
-		t1.play();
-//        GraphicsContext graphicsContext = canvasSnake.getGraphicsContext2D();
-//        start(graphicsContext);
+	start(gc);
+	snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
     }
   
-    public void start(GraphicsContext gc)  {
-    	
+    public void start(GraphicsContext gc)  
+    {
     	snakeScore=-1;
         newFood();
-        AnimationTimer timer = new AnimationTimer()                //ticks of the game, less ticks = more frames = faster snake animation
-        {
-            long lastTick = 0;
-            @Override
-            public void handle(long currentTick)
-            {
-            	if(lastTick == 0)
-            	{
-            		lastTick = currentTick;
-                    tick(gc);
-                    return;
-                }
-                if(currentTick - lastTick > 999999999/speed)
-                {
-                	lastTick = currentTick;
-                    tick(gc);
-                }
-            }
-        };
-        timer.start();
-        if(gameOver)
-        {
-        	timer.stop();
-        	timer.start();	
-        }
-
-        snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
+        timeLine = new Timeline(new KeyFrame(
+                Duration.seconds(0.10),
+                event -> tick(gc)
+        ));
+        timeLine.setCycleCount(Timeline.INDEFINITE);
+        timeLine.play();
     }
 
     protected void tick(GraphicsContext gc)
@@ -206,8 +182,10 @@ public class SnakeController {
     }
     
     @FXML
-    public void switchToGameMenu(ActionEvent event) throws IOException {
-    	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    public void switchToGameMenu(ActionEvent event) throws IOException 
+    {
+    	timeLine.stop();
+	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
@@ -222,7 +200,8 @@ public class SnakeController {
 	 }
 	
     @FXML
-	public void switchToSavePoint(ActionEvent event) throws IOException {
+	public void switchToSavePoint(ActionEvent event) throws IOException 
+	{
     	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
     	FXMLLoader fxmlLoader = new FXMLLoader();
