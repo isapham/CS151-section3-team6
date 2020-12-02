@@ -203,7 +203,8 @@ public class SnakeController {
     @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException 
 	{
-    	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	timeLine.stop();
+	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
     	FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/SnakeDB.fxml";
