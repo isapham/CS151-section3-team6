@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.CBBlockBreakerController">
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.BlockBreakerController">
    <center>
       <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
@@ -78,7 +78,7 @@
                   </Label>
                   <Label fx:id="messageForLose1" alignment="CENTER" layoutX="22.0" layoutY="345.0" prefHeight="40.0" prefWidth="547.0" textAlignment="CENTER">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Courier New Bold" size="70.0" />
                      </font>
                   </Label>
                </children>

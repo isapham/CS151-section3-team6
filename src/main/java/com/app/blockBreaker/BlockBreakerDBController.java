@@ -1,4 +1,4 @@
-package main.java.com.app;
+package main.java.com.app.blockBreaker;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.java.com.app.blockBreaker.BlockBreakerController;
+import main.java.com.app.GamesController;
 
 public class BlockBreakerDBController implements Initializable{
 	@FXML

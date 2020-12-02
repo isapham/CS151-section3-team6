@@ -12,13 +12,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
+ * The program implements an application that allow users
+ * to play 4 retro games
  * 
  * @author Ngan Luu, Isabel Pham, John Hoang, Anthony Nguyen
- *
+ * @since 2020-08
  */
 public class Main extends Application {
 	/**
 	 * Start application
+	 * @param primaryStage is the first stage 
 	 */
 	@Override
 	public void start(Stage primaryStage) {

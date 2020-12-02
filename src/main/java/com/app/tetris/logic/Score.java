@@ -14,7 +14,7 @@ public final class Score {
         score.setValue(score.getValue() + i);
     }
 
-    public void reset() {
+    public static void reset() {
         score.setValue(0);
     }
 }

@@ -22,6 +22,14 @@ public class MainMenuController implements Initializable{
 	@FXML  ImageView houseIcon;
 	@FXML  ImageView championIcon;
 	
+	@Override
+	public void initialize (URL location, ResourceBundle resources) {
+		houseIcon.setImage(new Image("/main/resources/cs151GameShopIcon.png"));
+		playIcon.setImage(new Image("/main/resources/cs151GameConsoleIcon.png"));
+		snowFlakeIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
+		championIcon.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
+	}
+	
 	@FXML
 	public void buttonAction(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader();
@@ -32,16 +40,9 @@ public class MainMenuController implements Initializable{
 		
 		Scene home_page_scene = new Scene(home_page_parent,844,750);
 		Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		scene2.setTitle("Games Home Page");
 		scene2.setScene(home_page_scene);
 		scene2.show();
-	}
-	
-	@Override
-	public void initialize (URL location, ResourceBundle resources) {
-		houseIcon.setImage(new Image("/main/resources/cs151GameShopIcon.png"));
-		playIcon.setImage(new Image("/main/resources/cs151GameConsoleIcon.png"));
-		snowFlakeIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
-		championIcon.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 	}
 	
 	@FXML
@@ -70,6 +71,7 @@ public class MainMenuController implements Initializable{
 		Scene home_page_scene = new Scene(home_page_parent,844,750);
 		Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		scene2.setScene(home_page_scene);
+		scene2.setTitle("Hi-Score Page");
 		scene2.show();
 	}
 	
@@ -84,7 +86,7 @@ public class MainMenuController implements Initializable{
 		Scene setting_scene = new Scene(settingPage,844,750);
 		Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		scene2.setScene(setting_scene);
-		scene2.setTitle("Settings");
+		scene2.setTitle("Settings Page");
 		scene2.show();	
 	}
 	

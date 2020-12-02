@@ -1,5 +1,4 @@
 package main.java.com.app;
-//this class is used for mysql store and retrieve
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +7,11 @@ import java.sql.Statement;
 
 import com.sun.rowset.CachedRowSetImpl;
 
+/**
+ * 
+ * This class has functions to connect and retrieve data from database
+ *
+ */
 public class ConnectionClass {
 	private static final String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
 	private static Connection connection = null;
@@ -15,11 +19,12 @@ public class ConnectionClass {
 	private static String USERNAME = "cs151";
 	private static String PASSWORD = "cs151";
 	
+	/**
+	 * This method is used to connect data to mysql DB
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public static void dbConnect() throws SQLException, ClassNotFoundException {
-		//String dbName="Points_List";
-		//String userName ="root";
-		//String gamePoint = "";
-		//String totalScore = "";
 		try {
 			Class.forName(JDBC_Driver);			
 		} catch (ClassNotFoundException e) {
@@ -40,6 +45,10 @@ public class ConnectionClass {
 		}
 	}
 	
+	/**
+	 * This method is used to disconnect with DB
+	 * @throws SQLException
+	 */
 	public static void dbDisconnect() throws SQLException{
 		try {
 			if(connection != null && !connection.isClosed()) {
@@ -51,7 +60,13 @@ public class ConnectionClass {
 		}
 	}
 	
-	//this is for insert/delete/update operation
+	/**
+	 * This method is for insert/delete/update operation
+	 * 
+	 * @param sqlStmt
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public static void dbExecuteQuery(String sqlStmt) throws SQLException, ClassNotFoundException{
 		Statement stmt = null;
 		try {
@@ -72,7 +87,13 @@ public class ConnectionClass {
 		}
 	}
 	
-	//this is for retrieve the records from the db
+	/**
+	 * This method is for retrieve the records from the DB
+	 * @param sqlQuery
+	 * @return ResultSet This returns a set of data from DB
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public static ResultSet dbExecute(String sqlQuery) throws SQLException, ClassNotFoundException{
 		Statement stmt = null;
 		ResultSet rs = null;

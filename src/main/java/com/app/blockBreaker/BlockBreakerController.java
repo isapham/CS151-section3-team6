@@ -37,9 +37,6 @@ public class BlockBreakerController extends BlockBreakerMainController{
 
 	@FXML private Pane pane;
 	@FXML private GridPane brickGrid;
-	
-	//blockbreaker.fxml
-	//@FXML private Circle ball;
 
 	@FXML private Label messageForLose;
 	@FXML private Rectangle paddle;

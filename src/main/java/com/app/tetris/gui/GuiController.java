@@ -1,10 +1,7 @@
 package main.java.com.app.tetris.gui;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,11 +29,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.com.app.tetris.logic.DownData;
+import main.java.com.app.tetris.logic.Score;
 import main.java.com.app.tetris.logic.ViewData;
 import main.java.com.app.tetris.logic.events.EventSource;
 import main.java.com.app.tetris.logic.events.EventType;
@@ -45,7 +42,7 @@ import main.java.com.app.tetris.logic.events.MoveEvent;
 
 public class GuiController implements Initializable {
 	private static final int BRICK_SIZE = 20;
-
+	public static int tetrisColor = 0; //black and white =0; colorful =1; colorblind color = 2
     @FXML
     private GridPane gamePanel;
 
@@ -81,14 +78,7 @@ public class GuiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        try {
-//			Font.loadFont(new FileInputStream(new File("src/main/resources/digital.ttf")), 12);
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-        //Font.loadFont(getClass().getClassLoader().getResource("src/main/resources/digital.ttf").toExternalForm(), 38);
+    	Score.reset();
         gamePanel.setFocusTraversable(true);
         gamePanel.requestFocus();
         gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -152,7 +142,7 @@ public class GuiController implements Initializable {
                 gamePanel.add(rectangle, j, i - 2);
             }
         }
-
+        
         rectangles = new Rectangle[brick.getBrickData().length][brick.getBrickData()[0].length];
         for (int i = 0; i < brick.getBrickData().length; i++) {
             for (int j = 0; j < brick.getBrickData()[i].length; j++) {
@@ -162,6 +152,7 @@ public class GuiController implements Initializable {
                 brickPanel.add(rectangle, j, i);
             }
         }
+    
         brickPanel.setLayoutX(gamePanel.getLayoutX() + brick.getxPosition() * brickPanel.getVgap() + brick.getxPosition() * BRICK_SIZE);
         brickPanel.setLayoutY(-42 + gamePanel.getLayoutY() + brick.getyPosition() * brickPanel.getHgap() + brick.getyPosition() * BRICK_SIZE);
 
@@ -177,8 +168,48 @@ public class GuiController implements Initializable {
     }
 
     private Paint getFillColor(int i) {
-        Paint returnPaint;
-        switch (i) {
+    	Paint returnPaint = null; 
+    	Color myColor1 = new Color(230.0/255.0, 159.0/255.0, 0.0/255.0,255/255.0);
+    	Color myColor2 = new Color(86.0/255.0, 180.0/255.0, 233.0/255.0, 255/255.0);
+    	Color myColor3 = new Color(0.0/255.0, 158.0/255.0, 115.0/255.0, 255/255.0);
+    	Color myColor4 = new Color(240.0/255.0, 228.0/255.0, 66.0/255.0, 255/255.0);
+    	Color myColor5 = new Color(0.0/255.0, 114.0/255.0, 178.0/255.0, 255/255.0);
+    	Color myColor6 = new Color(213.0/255.0,94.0/255.0,0.0/255.0,255/255.0);
+    	Color myColor7 = new Color(204.0/255.0,121.0/255.0,167.0/255.0,255/255.0);
+    	
+    	if (tetrisColor == 0) { //0 means black and white only
+    		switch (i) {
+            case 0:
+                returnPaint = Color.TRANSPARENT;
+                break;
+            case 1:
+                returnPaint = Color.WHITE;
+                break;
+            case 2:
+                returnPaint = Color.WHITE;
+                break;
+            case 3:
+                returnPaint = Color.WHITE;
+                break;
+            case 4:
+                returnPaint = Color.WHITE;
+                break;
+            case 5:
+                returnPaint = Color.WHITE;
+                break;
+            case 6:
+                returnPaint = Color.WHITE;
+                break;
+            case 7:
+                returnPaint = Color.WHITE;
+                break;
+            default:
+                returnPaint = Color.WHITE;
+                break;
+    		}
+    		//return returnPaint1;
+    	} else if (tetrisColor == 1) { // 1 means colorful palette
+    		switch (i) {
             case 0:
                 returnPaint = Color.TRANSPARENT;
                 break;
@@ -206,10 +237,43 @@ public class GuiController implements Initializable {
             default:
                 returnPaint = Color.WHITE;
                 break;
-        }
-        return returnPaint;
+    		}
+    		//return returnPaint2;
+    	} else if (tetrisColor == 2) {
+    		switch (i) {
+            case 0:
+                returnPaint = Color.TRANSPARENT;
+                break;
+            case 1:
+                returnPaint = myColor1;
+                break;
+            case 2:
+                returnPaint = myColor2;
+                break;
+            case 3:
+                returnPaint = myColor3;
+                break;
+            case 4:
+                returnPaint = myColor4;
+                break;
+            case 5:
+                returnPaint = myColor5;
+                break;
+            case 6:
+                returnPaint = myColor6;
+                break;
+            case 7:
+                returnPaint = myColor7;
+                break;
+            default:
+                returnPaint = Color.WHITE;
+                break;
+    		}
+    		//return returnPaint3;
+    	}
+    	return returnPaint;
     }
-
+    
     private void generatePreviewPanel(int[][] nextBrickData) {
         nextBrick.getChildren().clear();
         for (int i = 0; i < nextBrickData.length; i++) {
@@ -292,6 +356,7 @@ public class GuiController implements Initializable {
         gamePanel.requestFocus();
     }
     
+    @FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
@@ -302,9 +367,11 @@ public class GuiController implements Initializable {
 		Scene gamesMenuScene = new Scene (gamesMenu);
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(gamesMenuScene);
+		window.setTitle("Home Page");
 		window.show();
 	}
 	
+    @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/TetrisDB.fxml";

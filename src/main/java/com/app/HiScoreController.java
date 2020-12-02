@@ -58,9 +58,7 @@ public class HiScoreController {
 		Scene mainMenuScene = new Scene (main_menu_page);
 		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		windowView.setScene(mainMenuScene);
+		windowView.setTitle("Main Menu Homepage");
 		windowView.show();
-		
     }
-	
-	
 }

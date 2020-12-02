@@ -41,53 +41,34 @@ public class SettingsController implements Initializable{
 	@FXML  CheckBox check1;
 	@FXML  ImageView gearIcon;
 	@FXML  ToggleButton toggle;
-	private final String enabled = "ENABLED";
-	private final String disabled = "DISABLED";
+	private final String enabled = "ENABLE IT?";
+	private final String disabled = "You are using Colorblind mode. DISABLE IT?";
 	
 	
 	
-@Override
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gearIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
-		if(GamesController.cbEnabled == 0) {
-			toggle.setText(disabled);
-			toggle.setSelected(false);
-		}else if(GamesController.cbEnabled ==1) {
+		if (GamesController.cbEnabled == 0) {
 			toggle.setText(enabled);
-			toggle.setSelected(true);
+		} else {
+			toggle.setText(disabled);
 		}
-		
 	}
 
-
-	
 	@FXML
 	public void colorBlindMode(ActionEvent event) throws IOException {
-		if(toggle.isSelected() == true) {
+		if (GamesController.cbEnabled == 0) {
 			GamesController.cbEnabled = 1;
-			toggle.setText(enabled);
-			
-		
-		}else if(toggle.isSelected() == false) {
-			toggle.setSelected(false);
-			GamesController.cbEnabled = 0;
 			toggle.setText(disabled);
-			
-			
+		} else if (GamesController.cbEnabled == 1) {
+			GamesController.cbEnabled = 0;
+			toggle.setText(enabled);
 		}
-		
-		
-		
-		
-		
 	}
 
-	
-
-
-	
-
 	//switches back to menu
+	@FXML
 	public void switchToMainMenu(ActionEvent event) {
     	Parent mainMenu;
     
