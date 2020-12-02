@@ -35,6 +35,7 @@ public class SnakeController {
     static Random random = new Random();
     public static Move direction = Move.left;
     public static List<Corner> snake = new ArrayList<>();
+	private Timeline timeLine;
     
 	@FXML private Canvas canvasSnake;
 
