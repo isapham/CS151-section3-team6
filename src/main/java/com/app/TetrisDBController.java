@@ -40,6 +40,8 @@ public class TetrisDBController implements Initializable{
 	
 	@FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();

@@ -44,8 +44,6 @@ public class SettingsController implements Initializable{
 	private final String enabled = "ENABLE IT?";
 	private final String disabled = "You are using Colorblind mode. DISABLE IT?";
 	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gearIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
@@ -70,6 +68,8 @@ public class SettingsController implements Initializable{
 	//switches back to menu
 	@FXML
 	public void switchToMainMenu(ActionEvent event) {
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
     	Parent mainMenu;
     
 		try {

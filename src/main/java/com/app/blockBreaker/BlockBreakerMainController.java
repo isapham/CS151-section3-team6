@@ -33,7 +33,8 @@ public class BlockBreakerMainController {
 	
 	@FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
-		
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -48,6 +49,8 @@ public class BlockBreakerMainController {
 	
 	@FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException {
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
     	FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/BlockBreakerDB.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();

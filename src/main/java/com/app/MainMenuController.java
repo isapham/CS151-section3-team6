@@ -32,6 +32,8 @@ public class MainMenuController implements Initializable{
 	
 	@FXML
 	public void buttonAction(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -47,6 +49,8 @@ public class MainMenuController implements Initializable{
 	
 	@FXML
 	public void switchToItemShop(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/itemShop.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -62,6 +66,8 @@ public class MainMenuController implements Initializable{
 	
 	@FXML
 	public void switchToHiScore(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/HiScore.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -77,6 +83,8 @@ public class MainMenuController implements Initializable{
 	
 	@FXML
 	public void switchToGameSetting(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/gameSettings.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();

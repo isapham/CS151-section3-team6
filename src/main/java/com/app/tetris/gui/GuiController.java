@@ -358,6 +358,8 @@ public class GuiController implements Initializable {
     
     @FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
+    	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Games.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -367,12 +369,14 @@ public class GuiController implements Initializable {
 		Scene gamesMenuScene = new Scene (gamesMenu);
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(gamesMenuScene);
-		window.setTitle("Home Page");
+		window.setTitle("Games Home Page");
 		window.show();
 	}
 	
     @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException {
+    	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/TetrisDB.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -382,6 +386,7 @@ public class GuiController implements Initializable {
 		Scene DBScene = new Scene (DBMenu);
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(DBScene);
+		window.setTitle("Save Points to DB");
 		window.show();
 	}
 }

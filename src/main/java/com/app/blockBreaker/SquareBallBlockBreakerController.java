@@ -20,8 +20,6 @@ import javafx.util.Duration;
 import main.java.com.app.GamesController;
 
 public class SquareBallBlockBreakerController extends BlockBreakerMainController{
-
-	
 	//blockbreaker2.fxml
 	@FXML private Rectangle ball;
 
@@ -402,6 +400,4 @@ public class SquareBallBlockBreakerController extends BlockBreakerMainController
 			return false;
 		}
 	}
-	
-
 }

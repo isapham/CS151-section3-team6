@@ -74,6 +74,8 @@ public class GamesController implements Initializable{
 	 */
 	@FXML
 	public void switchToBlockBreaker(ActionEvent event)throws IOException {
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "";
 		
@@ -137,6 +139,8 @@ public class GamesController implements Initializable{
 	 */
 	@FXML
 	public void switchToMainMenu(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/MainMenu.fxml";
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
@@ -172,6 +176,8 @@ public class GamesController implements Initializable{
 	 */
 	@FXML
 	public void switchToPong(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml ="";
 		if (circleBall==true) {
@@ -217,6 +223,8 @@ public class GamesController implements Initializable{
 	 */
 	@FXML
 	public void switchToTetris(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		if(cbEnabled == 1) {
 			GuiController.tetrisColor = 2;
 		}
@@ -245,6 +253,8 @@ public class GamesController implements Initializable{
 	 */
 	@FXML
 	public void switchToSnake(ActionEvent event) throws IOException{
+		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "";
 		if(cbEnabled == 1) {
