@@ -251,11 +251,7 @@ public class GamesController implements Initializable{
 			pathToFxml = "src/main/resources/ColorBlindSnake.fxml";
 			
 		}else {
-			if (fruitRoundShape==true) {
-				pathToFxml = "src/main/resources/SnakeCircleFruit.fxml";
-			} else {
-				pathToFxml = "src/main/resources/SnakeRectangleFruit.fxml";
-			}
+			pathToFxml = "src/main/resources/Snake.fxml";
 		}
 		
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();

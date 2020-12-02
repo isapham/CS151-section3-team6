@@ -19,6 +19,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import main.java.com.app.GamesController;
 
 public class SnakeController {
 	//@FXML private VBox root;
@@ -189,9 +190,14 @@ public class SnakeController {
         gc.setFont(new Font("", 20));                                                  //game score font size
         gc.fillText("Score: " + snakeScore, 10, 20);                                 	//game score at position
         
+        //fruitRoundShape = true; //true=round, false=square
         Color foodColor = Color.RED;                                                                //food color
         gc.setFill(foodColor);                                                         //fill food with food color
-        gc.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        if (GamesController.fruitRoundShape = true) {
+        	gc.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        } else if (GamesController.fruitRoundShape = false) {
+        	gc.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
+        }
 
         for(Corner canvas : snake){
             gc.setFill(Color.LIGHTGREEN);                                              //color of snake

@@ -27,7 +27,7 @@ import main.java.com.app.tetris.gui.GuiController;
 
 public class ItemShopController implements Initializable{
 	@FXML ImageView storeIcon;
-	@FXML Button blockBreakerButton, pongButton, snakeButton, tetrisButton;
+	@FXML Button blockBreakerButton, pongButton, snakeButton, tetrisButton, ogBB, ogTetris, ogSnake, ogPong;
 	@FXML  ImageView pointIcon;
 	@FXML TextField totalScore;
 	@FXML TextArea tetrisRule;
@@ -41,18 +41,34 @@ public class ItemShopController implements Initializable{
 		storeIcon.setImage(new Image("/main/resources/cs151GameShopIcon.png"));
 		if (GamesController.totalPoints >= 10 && GamesController.totalPoints < 20) {
 			pongButton.setDisable(false);
+			ogBB.setDisable(false);
+			ogTetris.setDisable(false);
+			ogSnake.setDisable(false);
+			ogPong.setDisable(false);
 		}else if(GamesController.totalPoints >= 20 && GamesController.totalPoints < 30) {
 			pongButton.setDisable(false);
 			tetrisButton.setDisable(false);
+			ogBB.setDisable(false);
+			ogTetris.setDisable(false);
+			ogSnake.setDisable(false);
+			ogPong.setDisable(false);
 		}else if (GamesController.totalPoints >= 30 && GamesController.totalPoints < 40) {
 			blockBreakerButton.setDisable(false);
 			tetrisButton.setDisable(false);
 			pongButton.setDisable(false);
+			ogBB.setDisable(false);
+			ogTetris.setDisable(false);
+			ogSnake.setDisable(false);
+			ogPong.setDisable(false);
 		}else if (GamesController.totalPoints >= 40) {
 			snakeButton.setDisable(false);
 			blockBreakerButton.setDisable(false);
 			tetrisButton.setDisable(false);
 			pongButton.setDisable(false);
+			ogBB.setDisable(false);
+			ogTetris.setDisable(false);
+			ogSnake.setDisable(false);
+			ogPong.setDisable(false);
 		}
 	}
 	
@@ -151,6 +167,7 @@ public class ItemShopController implements Initializable{
 	@FXML 
 	public void switchToOGPong (ActionEvent event) throws IOException {
 		GamesController.circleBall = true; 
+		GamesController.totalPoints = GamesController.totalPoints - 10;
 		switchToMainMenu();
 	}
 	
@@ -162,6 +179,7 @@ public class ItemShopController implements Initializable{
 	@FXML 
 	public void switchToOGTetris (ActionEvent event) throws IOException {
 		GuiController.tetrisColor = 0;
+		GamesController.totalPoints = GamesController.totalPoints - 10;
 		switchToMainMenu();
 	}
 	
@@ -169,6 +187,7 @@ public class ItemShopController implements Initializable{
 	@FXML 
 	public void switchToOGBlockBreaker (ActionEvent event) throws IOException {
 		GamesController.ballShape = 0;
+		GamesController.totalPoints = GamesController.totalPoints - 10;
 		switchToMainMenu();
 	}
 	
@@ -176,38 +195,7 @@ public class ItemShopController implements Initializable{
 	@FXML 
 	public void switchToOGSnake (ActionEvent event) throws IOException {
 		GamesController.fruitRoundShape = true; 
+		GamesController.totalPoints = GamesController.totalPoints - 10;
 		switchToMainMenu();
 	}
-	
-//	public static ObservableList<HiScore> getTotalScoreRecords() throws ClassNotFoundException, SQLException{
-//		String sql = "SELECT sumPoint FROM users"+" ORDER BY sumPoint DESC LIMIT 1";
-//		try {
-//			ResultSet lastestScore = ConnectionClass.dbExecute(sql);
-//			//ResultSet rsSet = ConnectionClass.dbExecute(sql);
-//			ObservableList<HiScore> list = getTotalScoreObjects(lastestScore);
-//			return list;
-//		}
-//		catch (SQLException e) {
-//			System.out.println("Error occured while fetching the records from DB"+e);
-//			e.printStackTrace();
-//			throw e;
-//		}
-//	}
-//	
-//	private static ObservableList<HiScore> getTotalScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
-//		try{
-//			ObservableList<HiScore> list = FXCollections.observableArrayList();
-//			
-//			while(rsSet.next()) {
-//				HiScore hiScore = new HiScore();
-//				hiScore.setPoScore(rsSet.getInt("PongScore"));
-//				list.add(hiScore);
-//			}
-//			return list;
-//		}catch (SQLException e){
-//			System.out.println("Error ocurred while fetching the data from DC"+e);
-//			e.printStackTrace();
-//			throw e;
-//		}
-//	}
 }
