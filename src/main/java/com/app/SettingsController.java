@@ -57,10 +57,11 @@ public class SettingsController implements Initializable{
 	@FXML
 	public void colorBlindMode(ActionEvent event) throws IOException {
 		if(toggle.isSelected()) {
-			
+			GamesController.cbEnabled = 1;
+			toggle.setText(enabled);
 			
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			String pathToFxml = "src/main/resources/ColorBlindGames.fxml";
+			String pathToFxml = "src/main/resources/Games.fxml";
 			URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 			fxmlLoader.setLocation(fxmlUrl);
 			Parent home_page_parent = fxmlLoader.load();
@@ -72,7 +73,9 @@ public class SettingsController implements Initializable{
 			
 			
 		}else {
+			GamesController.cbEnabled = 0;
 			toggle.setText(disabled);
+			
 			
 		}
 		
