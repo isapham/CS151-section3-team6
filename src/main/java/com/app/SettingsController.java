@@ -46,9 +46,16 @@ public class SettingsController implements Initializable{
 	
 	
 	
-	@Override
+@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		gearIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
+		if(GamesController.cbEnabled == 0) {
+			toggle.setText(disabled);
+			toggle.setSelected(false);
+		}else if(GamesController.cbEnabled ==1) {
+			toggle.setText(enabled);
+			toggle.setSelected(true);
+		}
 		
 	}
 
@@ -56,23 +63,13 @@ public class SettingsController implements Initializable{
 	
 	@FXML
 	public void colorBlindMode(ActionEvent event) throws IOException {
-		if(toggle.isSelected()) {
+		if(toggle.isSelected() == true) {
 			GamesController.cbEnabled = 1;
 			toggle.setText(enabled);
 			
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			String pathToFxml = "src/main/resources/Games.fxml";
-			URL fxmlUrl = new File(pathToFxml).toURI().toURL();
-			fxmlLoader.setLocation(fxmlUrl);
-			Parent home_page_parent = fxmlLoader.load();
-			
-			Scene home_page_scene = new Scene(home_page_parent,844,750);
-			Stage scene2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			scene2.setScene(home_page_scene);
-			scene2.show();
-			
-			
-		}else {
+		
+		}else if(toggle.isSelected() == false) {
+			toggle.setSelected(false);
 			GamesController.cbEnabled = 0;
 			toggle.setText(disabled);
 			
@@ -82,8 +79,8 @@ public class SettingsController implements Initializable{
 		
 		
 		
+		
 	}
-
 
 	
 
