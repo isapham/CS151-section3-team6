@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.app.blockBreaker.SquareBallBlockBreakerController">
+<BorderPane prefHeight="750.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.blockBreaker.SquareBallBlockBreakerController">
    <center>
       <Pane prefHeight="609.0" prefWidth="602.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
