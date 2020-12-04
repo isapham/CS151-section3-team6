@@ -17,6 +17,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * This class is responsible for the functions of settings page
+ *
+ */
 public class SettingsController implements Initializable{
 	@FXML  CheckBox check1;
 	@FXML  ImageView gearIcon;
@@ -34,6 +39,11 @@ public class SettingsController implements Initializable{
 		}
 	}
 
+	/**
+	 * This method is a button to change color palette for color blind accessibility
+	 * @param event, button click
+	 * @throws IOException
+	 */
 	@FXML
 	public void colorBlindMode(ActionEvent event) throws IOException {
 		if (GamesController.cbEnabled == 0) {
@@ -45,7 +55,11 @@ public class SettingsController implements Initializable{
 		}
 	}
 
-	//switches back to menu
+	/**
+	 * This method is a button to switch to main menu 
+	 * @param event, button click
+	 * @throws IOException
+	 */
 	@FXML
 	public void switchToMainMenu(ActionEvent event) {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
