@@ -2,6 +2,7 @@ package application.snake;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,7 +23,13 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class SnakeController {
+/**
+ * 
+ * This is the class that creates the Snake game page and contains its methods and attributes
+ *
+ */
+public class SnakeController 
+{
 	//@FXML private VBox root;
 	
 	static int speed = 10;
@@ -39,12 +46,18 @@ public class SnakeController {
 	private Timeline timeLine;
     
 	@FXML private Canvas canvasSnake;
-
-    public enum Move
+	
+	/**
+	 * Enums for moving the snake
+	 */
+    public enum Move	
     {
         left,right,up,down
     }
-
+    
+    /**
+	 * This method is used to create the game box surrounding the snake
+	 */
     public static class Corner
     {
         int x;
@@ -56,28 +69,44 @@ public class SnakeController {
             this.y = y;
         }
     }
-
-    public static void newFood() {   //function for spawning food at random coordinates
-        while(true){
+     
+    /**
+	 * This method is used to create a new food for the snake 
+	 */
+    public static void newFood() //function for spawning food at random coordinates
+    {   
+        while(true)
+        {
             foodX = random.nextInt(width);
             foodY = random.nextInt(height);
 
-            for(Corner canvas : snake){
-                if(canvas.x == foodX && canvas.y == foodY){continue;}
+            for(Corner canvas : snake)
+            {
+                if(canvas.x == foodX && canvas.y == foodY)
+                {
+                	continue;
+                }
             }
             snakeScore++;
             break;
         }
     }
-
-    public void initialize() 
+    
+    /**
+	 * This method starts the graphics of the snake game and place the starting snake
+	 */
+    public void initialize() //start the graphics context and the game
     {
     	GraphicsContext gc = canvasSnake.getGraphicsContext2D();
-	start(gc);
-	snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
+    	start(gc);
+		snake.add(new Corner(width / 2, height / 2));            //body of the snake at start, 1 block, copy and paste this line for more body parts
     }
   
-    public void start(GraphicsContext gc)  
+    /**
+	 * This method starts the game and creates a timeline to animated the snake
+	 * @param gc
+	 */
+    public void start(GraphicsContext gc)  //set the score and spawn new food and start animations
     {
     	snakeScore=-1;
         newFood();
@@ -87,16 +116,24 @@ public class SnakeController {
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
     }
-
+    
+    
+    /**
+	 * This method creates all the animation in the snake game
+	 * Animation for game over when the snake touches any of the 4 surrounding walls or itself
+	 * Animate a new food spawning when the snake head touches a food
+	 * Sets all the colors in the game
+	 * @param gc
+	 */
     protected void tick(GraphicsContext gc)
     {
-    	if(gameOver)                                            //game over screen
+    	if(gameOver)                               //game over screen
         {
             gc.setFill(Color.RED);                 //font color of game over text
             gc.setFont(new Font("", 50));          //font size
             gc.fillText("GAME OVER", 100, 250);    //Display text at x, y position   
 	
-            gc.setFill(Color.WHITE);                 //font color of game over text
+            gc.setFill(Color.WHITE);                //font color of game over text
             gc.setFont(new Font("", 20));          //font size
             gc.fillText("Press the R key to retry", 125, 275);    //Display text at x, y position                       
             return;
@@ -143,13 +180,16 @@ public class SnakeController {
                 break;
         }
 
-        if(foodX == snake.get(0).x && foodY == snake.get(0).y){  //snake eats food
+        if(foodX == snake.get(0).x && foodY == snake.get(0).y)	//snake eats food
+        {  
             snake.add(new Corner(-1, -1));                      //add a body part to end of snake
             newFood();                                          //spawn a new food randomly on map
         }
 
-        for(int i = 1; i < snake.size(); i++){                   //if snake makes contact with its own body
-            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y){
+        for(int i = 1; i < snake.size(); i++)		//if snake makes contact with its own body
+        {                   
+            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y)
+            {
                 gameOver = true;
             }
         }
@@ -176,6 +216,12 @@ public class SnakeController {
         }
     }
     
+    /**
+	 * This method switches window to main menu when user clicks on the switchToGameMenu button 
+	 * Stops the animation for snake when user leaves
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     public void switchToGameMenu(ActionEvent event) throws IOException 
     {
@@ -194,6 +240,12 @@ public class SnakeController {
 		windowView.show();
 	 }
 	
+    /**
+	 * This method saves the points accumulated in the snake game to the database to interact with the item shop when user clicks on the switchToSavePoint button 
+	 * Sends user to games menu and stops the animation for snake when user leaves
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException 
 	{
@@ -208,7 +260,6 @@ public class SnakeController {
 
 		Scene save_point_scene = new Scene(save_point_page);
 		Stage scene4 = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		
 		scene4.setTitle("Save Point to DB"); 
 		scene4.setScene(save_point_scene);
 		scene4.show();
