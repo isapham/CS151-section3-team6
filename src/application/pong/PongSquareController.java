@@ -26,8 +26,15 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Class that generates the Pong game with the ball as a square instead of a circle (alternative shape)
+ *
+ */
 public class PongSquareController extends PongController{
 	
+	/**
+	 * Method that initialize the game and points
+	 */
 	public void initialize() {
 		ppoints=0;
 		playerPointIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
@@ -37,6 +44,10 @@ public class PongSquareController extends PongController{
 		t1.play();
 	}
 	
+	/**
+	 * Method that runs the game with the ball as a square
+	 * @param gc
+	 */
 	private void run(GraphicsContext gc){
         //set background color
         gc.setFill(Color.BLACK);
@@ -117,6 +128,10 @@ public class PongSquareController extends PongController{
         gc.fillRect(playerPaddleXPos, GamesController.playerPaddleYPos, GamesController.PADDLE_WIDTH, GamesController.PADDLE_HEIGHT);
     }
 	
+	/**
+	 * Method that switches to the game menu when the event occurs
+	 * @param event - button click on "Exit Game"
+	 */
 	public void switchToGameMenu(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
@@ -133,6 +148,10 @@ public class PongSquareController extends PongController{
 		windowView.show();
 	 }
 	
+	/**
+	 * Method that swtiches to the save point mini menu when the event occurs
+	 * @param event - button click on "Save Point"
+	 */
 	public void switchToSavePoint(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();

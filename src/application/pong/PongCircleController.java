@@ -12,8 +12,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
+/**
+ * Class that generates the Pong game with ball as circle
+ *
+ */
 public class PongCircleController extends PongController{
 	
+	/**
+	 * Method that initialize the game
+	 */
 	public void initialize() {
 		ppoints=0;
 		playerPointIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
@@ -22,6 +29,11 @@ public class PongCircleController extends PongController{
 		t1.setCycleCount(Timeline.INDEFINITE);
 		t1.play();
 	}
+	
+	/**
+	 * Method that runs the pong game controller with ball as circle
+	 * @param gc
+	 */
 	private void run(GraphicsContext gc){
         //set background color
         gc.setFill(Color.BLACK);

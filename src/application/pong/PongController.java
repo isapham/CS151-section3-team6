@@ -16,6 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * Class the generates the Pong game with ball shaped as a circle (original)
+ *
+ */
 public class PongController {
 	@FXML protected Canvas canvas;
 	@FXML protected ImageView playerPointIcon;
@@ -37,13 +41,21 @@ public class PongController {
     public int playerPaddleXPos = 0;
     public double compPaddleXPos = GamesController.PONG_WIDTH - GamesController.PADDLE_WIDTH;
     
-	// Add points to score
+    /**
+     * Method that add points to the score
+     * @param num - score earned
+     */
 	protected void pong_score(int num) {
 		ppoints += num;
 		playerScoreTextField.setStyle("-fx-text-fill: white; -fx-background-color: black");
 		playerScoreTextField.setText(ppoints.toString());
 	}
 	
+	/**
+	 * Method that switch to the game menu when event occurs
+	 * @param event - button click 
+	 * @throws IOException
+	 */
 	public void switchToGameMenu(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
@@ -60,6 +72,11 @@ public class PongController {
 		windowView.show();
 	 }
 	
+	/**
+	 * Method that switch to the save point mini menu when event occurs
+	 * @param event - button click on "Save Point"
+	 * @throws IOException
+	 */
 	public void switchToSavePoint(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
