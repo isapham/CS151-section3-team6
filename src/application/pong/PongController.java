@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * Class the generates the Pong game with ball shaped as a circle (original)
+ * Class the establish the general Pong game controls
  *
  */
 public class PongController {
@@ -58,7 +58,7 @@ public class PongController {
 	
 	/**
 	 * Method that switch to the game menu when event occurs
-	 * @param event - button click 
+	 * @param event - button click on "Exit Game"
 	 * @throws IOException
 	 */
 	public void switchToGameMenu(ActionEvent event) throws IOException {

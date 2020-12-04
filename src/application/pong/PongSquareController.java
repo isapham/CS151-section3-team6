@@ -37,6 +37,7 @@ public class PongSquareController extends PongController{
 	 */
 	public void initialize() {
 		ppoints=0;
+		playerScore = 0;
 		playerPointIcon.setImage(new Image("/main/resources/cs151GameGalPointsIcon1.png"));
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Timeline t1 = new Timeline(new KeyFrame(Duration.millis(10), e ->run(gc)));
