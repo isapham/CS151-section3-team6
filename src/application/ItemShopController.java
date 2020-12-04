@@ -88,25 +88,6 @@ public class ItemShopController implements Initializable{
 		windowView.setTitle("Main Menu Homepage");
 		windowView.show();
     }
-
-	/**
-	 * This method is for switch back to home page.
-	 * However, this is not a button function.
-	 * @throws IOException
-	 */
-	public void switchToMainMenu() throws IOException{
-		FXMLLoader fxmlLoader = new FXMLLoader();
-		String pathToFxml = "src/main/resources/MainMenu.fxml";
-		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
-		fxmlLoader.setLocation(fxmlUrl);
-		Parent main_menu_page = fxmlLoader.load();    
-		
-		Scene mainMenuScene = new Scene (main_menu_page);
-		Stage windowView = new Stage();
-		windowView.setScene(mainMenuScene);
-		windowView.setTitle("Main Menu Homepage");
-		windowView.show();
-    }
 	
 	/**
 	 * This method is for points trade-off function for BlockBreaker game
@@ -117,7 +98,7 @@ public class ItemShopController implements Initializable{
 	public void changeToSquareBall(ActionEvent event) throws IOException {
 		GamesController.ballShape = 1; 
 		GamesController.totalPoints = GamesController.totalPoints - 30;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
 	/**
@@ -129,7 +110,7 @@ public class ItemShopController implements Initializable{
 	public void changeToSquarePongBall(ActionEvent event) throws IOException {
 		GamesController.circleBall = false; 
 		GamesController.totalPoints = GamesController.totalPoints - 10;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
 	/**
@@ -141,7 +122,7 @@ public class ItemShopController implements Initializable{
 	public void changeFruitToTriangle(ActionEvent event) throws IOException {
 		GamesController.fruitRoundShape = false; 
 		GamesController.totalPoints = GamesController.totalPoints - 40;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
 	/**
@@ -153,7 +134,7 @@ public class ItemShopController implements Initializable{
 	public void changeToTetrisEffect(ActionEvent event) throws IOException {
 		GuiController.tetrisColor = 1;
 		GamesController.totalPoints = GamesController.totalPoints - 20;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
 	/**
@@ -165,7 +146,7 @@ public class ItemShopController implements Initializable{
 	public void switchToOGPong (ActionEvent event) throws IOException {
 		GamesController.circleBall = true; 
 		GamesController.totalPoints = GamesController.totalPoints - 10;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
 	/**
@@ -177,22 +158,30 @@ public class ItemShopController implements Initializable{
 	public void switchToOGTetris (ActionEvent event) throws IOException {
 		GuiController.tetrisColor = 0;
 		GamesController.totalPoints = GamesController.totalPoints - 10;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
-	//switch back to round shape ball (BlockBreaker)
+	/**
+	 * This method is for switch back to original original round ball shape (Block Breaker)
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML 
 	public void switchToOGBlockBreaker (ActionEvent event) throws IOException {
 		GamesController.ballShape = 0;
 		GamesController.totalPoints = GamesController.totalPoints - 10;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 	
-	//switch back to round shape fruit (Snake)
+	/**
+	 * This method is for switch back to original round shape fruit (snake)
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML 
 	public void switchToOGSnake (ActionEvent event) throws IOException {
 		GamesController.fruitRoundShape = true; 
 		GamesController.totalPoints = GamesController.totalPoints - 10;
-		switchToMainMenu();
+		switchToMainMenu(event);
 	}
 }
