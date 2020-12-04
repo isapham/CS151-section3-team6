@@ -35,6 +35,12 @@ public class MainMenuController implements Initializable{
 		championIcon.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 	}
 	
+	/**
+	 * This method switches to games page 
+	 * 
+	 * @param even, button click
+	 * @throws IOException
+	 */
 	@FXML
 	public void buttonAction(ActionEvent event) throws IOException{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -52,6 +58,13 @@ public class MainMenuController implements Initializable{
 		scene2.show();
 	}
 	
+	
+	/**
+	 * This method switches to Item Shop page
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void switchToItemShop(ActionEvent event) throws IOException{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -69,6 +82,12 @@ public class MainMenuController implements Initializable{
 		itemShopStage.show();	
 	}
 	
+	/**
+	 * This method switches to Hi-score page
+	 * 
+	 * @param event, button click
+	 * @throws IOException
+	 */
 	@FXML
 	public void switchToHiScore(ActionEvent event) throws IOException{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -86,6 +105,12 @@ public class MainMenuController implements Initializable{
 		scene2.show();
 	}
 	
+	/**
+	 * This method switches to settings page 
+	 * 
+	 * @param event, button click
+	 * @throws IOException
+	 */
 	@FXML
 	public void switchToGameSetting(ActionEvent event) throws IOException{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
