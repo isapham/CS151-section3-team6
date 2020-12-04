@@ -1,7 +1,5 @@
 package application.blockBreaker;
 
-import java.security.SecureRandom;
-
 import application.GamesController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,12 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -22,65 +15,6 @@ import javafx.util.Duration;
 public class SquareBallBlockBreakerController extends BlockBreakerMainController{
 	//blockbreaker2.fxml
 	@FXML private Rectangle ball;
-
-	@FXML private Pane pane;
-	@FXML private GridPane brickGrid;
-	
-	//blockbreaker.fxml
-	//@FXML private Circle ball;
-
-	@FXML private Label messageForLose;
-	@FXML private Rectangle paddle;
-    @FXML private TextField pointsTextField;
-    @FXML private ImageView pointsIcon;
-    
-    // Teal Bricks - 1st Row
-    @FXML private Rectangle tb6;
-    @FXML private Rectangle tb5;
-    @FXML private Rectangle tb4;
-    @FXML private Rectangle tb3;
-    @FXML private Rectangle tb2;
-    @FXML private Rectangle tb1;
-    
-    // Blue Bricks - 2nd Row
-	@FXML private Rectangle bb1;
-    @FXML private Rectangle bb2;
-    @FXML private Rectangle bb3;
-    @FXML private Rectangle bb4;
-    @FXML private Rectangle bb5;
-    @FXML private Rectangle bb6;
-    
-    // Purple Bricks - 3rd Row
-    @FXML private Rectangle pb1;
-    @FXML private Rectangle pb2;
-    @FXML private Rectangle pb3;
-    @FXML private Rectangle pb4;
-    @FXML private Rectangle pb5;
-    @FXML private Rectangle pb6;
-
-    // Hot Pink Bricks - 4th Row
-    @FXML private Rectangle hb1;
-    @FXML private Rectangle hb2;
-    @FXML private Rectangle hb3;
-    @FXML private Rectangle hb4;
-    @FXML private Rectangle hb5;
-    @FXML private Rectangle hb6;
-    
-    // Red Bricks - 5th Row
-    @FXML private Rectangle rb2;
-    @FXML private Rectangle rb5;
-    @FXML private Rectangle rb3;
-    @FXML private Rectangle rb4;
-    @FXML private Rectangle rb6;
-    @FXML private Rectangle rb1;
-
-	// Game variables
-    //public static Integer points = 0;
-    
-	// Random for ball bouncing
-	SecureRandom random = new SecureRandom();
-	int dx = 1 + random.nextInt(5);
-	int dy = 1 + random.nextInt(5);
 
 	// Initialize - Game Launch
 	public void initialize() {

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import application.GamesController;
@@ -25,15 +26,9 @@ public class TetrisDBController implements Initializable{
 	
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
-		try {
-			GamesController.insertUsernameTetris();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		GamesController.totalPoints = Score.score.getValue()+GamesController.totalPoints;
+		Score.tetrisScoreList.add(Score.score.getValue());
+		Collections.sort(Score.tetrisScoreList,Collections.reverseOrder()); 
 		gameScoreTxt.setText(Score.score.getValue().toString());
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}

@@ -3,6 +3,7 @@ package application.pong;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import application.GamesController;
 import javafx.event.ActionEvent;
@@ -29,7 +30,11 @@ public class PongController {
 	public static int ballYSpeed = 1;
 	public static int ballXSpeed = 1;
 	public static Integer ppoints = 0;
-	 //ball's initial location
+	
+	//create an array list to store and sort block breaker score
+	public static ArrayList<Integer> pongScoreList = new ArrayList<Integer>();
+	
+	//ball's initial location
     public static double ballXPos = GamesController.PONG_WIDTH/2;
     public static double ballYPos = GamesController.PONG_WIDTH/2;
     

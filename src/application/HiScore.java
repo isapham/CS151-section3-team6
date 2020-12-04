@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class HiScore {
+	
 	private IntegerProperty blockBreakerScoreProperty;
 	private IntegerProperty pongScoreProperty;
 	private IntegerProperty tetrisScoreProperty;
@@ -20,7 +21,7 @@ public class HiScore {
 	
 	//this is for block breaker game score
 	public int getBBScore() {
-		return blockBreakerScoreProperty.get();
+		return this.blockBreakerScoreProperty.get();
 	}
 	
 	public void setBBScore(int score) {
@@ -28,12 +29,12 @@ public class HiScore {
 	}
 	
 	public IntegerProperty getBlockBreakerScore() {
-		return blockBreakerScoreProperty;
+		return this.blockBreakerScoreProperty;
 	}
 	
 	//this is for tetris game score
 	public int getTetScore() {
-		return tetrisScoreProperty.get();
+		return this.tetrisScoreProperty.get();
 	}
 	
 	public void setTetScore(int score) {
@@ -41,12 +42,12 @@ public class HiScore {
 	}
 	
 	public IntegerProperty getTetrisScore() {
-		return tetrisScoreProperty;
+		return this.tetrisScoreProperty;
 	}
 	
 	//this is for pong score 
 	public int getPoScore() {
-		return pongScoreProperty.get();
+		return this.pongScoreProperty.get();
 	}
 	
 	public void setPoScore(int score) {
@@ -54,12 +55,12 @@ public class HiScore {
 	}
 	
 	public IntegerProperty getPongScore() {
-		return pongScoreProperty;
+		return this.pongScoreProperty;
 	}
 	
 	//this is for snake score
 	public int getSnaScore() {
-		return snakeScoreProperty.get();
+		return this.snakeScoreProperty.get();
 	}
 	
 	public void setSnaScore(int score) {
@@ -72,7 +73,7 @@ public class HiScore {
 	
 	//this is for block breaker game score
 	public int getTotScore() {
-		return totalScoreProperty.get();
+		return this.totalScoreProperty.get();
 	}
 	
 	public void setTotScore(int score) {
@@ -80,6 +81,6 @@ public class HiScore {
 	}
 	
 	public IntegerProperty getTotalScore() {
-		return totalScoreProperty;
+		return this.totalScoreProperty;
 	}
 }

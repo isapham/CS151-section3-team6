@@ -30,7 +30,8 @@ import javafx.util.Duration;
  */
 public class SnakeController 
 {
-	//@FXML private VBox root;
+	//create an array list to store and sort snake score
+	public static ArrayList<Integer> snakeScoreList = new ArrayList<Integer>();
 	
 	static int speed = 10;
     public static int snakeScore = -1;

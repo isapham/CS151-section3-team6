@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import application.blockBreaker.BlockBreakerController;
@@ -308,231 +310,96 @@ public class GamesController implements Initializable{
 	
 	
 	public static int totalPoints = 0;
-	/**
-	 * This method is for insert user's block breaker game points into database
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public static void insertUsernameBlockBreaker() throws SQLException, ClassNotFoundException{
-		totalPoints = BlockBreakerMainController.points+totalPoints;
-		String sql = "insert into users(BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+BlockBreakerController.points+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
-		try {
-			ConnectionClass.dbExecuteQuery(sql);
-		}
-		catch(SQLException e) {
-			System.out.println("Exception occur while inserting the data "+e);
-			e.printStackTrace();
-			throw e;
-		}
-	}
-	
-	/**
-	 * This method is for insert user's Tetris game points into database
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public static void insertUsernameTetris() throws SQLException, ClassNotFoundException{
-		totalPoints = Score.score.getValue()+totalPoints;
-		String sql = "insert into users(TetrisScore, sumPoint, PongScore, BlockBreakerScore, SnakeScore) values('"+Score.score.getValue()+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
-		try {
-			ConnectionClass.dbExecuteQuery(sql);
-		}
-		catch(SQLException e) {
-			System.out.println("Exception occur while inserting the data "+e);
-			e.printStackTrace();
-			throw e;
-		}
-	}
-	
-	/**
-	 * This method is for insert user's Pong game points into database
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public static void insertUsernamePong() throws SQLException, ClassNotFoundException{
-		totalPoints = PongController.ppoints+totalPoints;
-		String sql = "insert into users(PongScore, sumPoint, TetrisScore, BlockBreakerScore, SnakeScore) values('"+PongController.ppoints+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
-		try {
-			ConnectionClass.dbExecuteQuery(sql);
-		}
-		catch(SQLException e) {
-			System.out.println("Exception occur while inserting the data "+e);
-			e.printStackTrace();
-			throw e;
-		}
-	}
-	
-	/**
-	 * This method is for insert user's Snake game points into database
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public static void insertUsernameSnake() throws SQLException, ClassNotFoundException{
-		totalPoints = SnakeController.snakeScore+totalPoints;
-		String sql = "insert into users(SnakeScore, sumPoint, TetrisScore, BlockBreakerScore, PongScore) values('"+SnakeController.snakeScore+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
-		try {
-			ConnectionClass.dbExecuteQuery(sql);
-		}
-		catch(SQLException e) {
-			System.out.println("Exception occur while inserting the data "+e);
-			e.printStackTrace();
-			throw e;
-		}
-	}
-	
-	/**
-	 * This method is for insert user's total game points into database
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public static void insertTotalScore() throws SQLException, ClassNotFoundException{
-		String sql = "insert into users(BlockBreakerScore, sumPoint, PongScore, TetrisScore, SnakeScore) values('"+0+"','"+totalPoints+"','"+0+"','"+0+"','"+0+"')";
-		try {
-			ConnectionClass.dbExecuteQuery(sql);
-		}
-		catch(SQLException e) {
-			System.out.println("Exception occur while inserting the data "+e);
-			e.printStackTrace();
-			throw e;
-		}
-	}
+
 	 /**
 	  * This method is for retrieving Pong points from database
 	  * @return ObservableList<HiScore> This is the list of user's Pong score 
-	  * @throws ClassNotFoundException
-	  * @throws SQLException
 	  */
-	public static ObservableList<HiScore> getPongRecords() throws ClassNotFoundException, SQLException{
-		String sql = "SELECT PongScore FROM users"+" ORDER BY PongScore DESC";
-		try {
-			ResultSet rsSet = ConnectionClass.dbExecute(sql);
-			ObservableList<HiScore> list = getPongScoreObjects(rsSet);
-			return list;
-		}
-		catch (SQLException e) {
-			System.out.println("Error occured while fetching the records from DB"+e);
-			e.printStackTrace();
-			throw e;
-		}
+	public static ObservableList<HiScore> getPongRecords() {
+		ObservableList<HiScore> list = getPongScoreObjects(PongController.pongScoreList);
+		return list;
 	}
 	
 	/**
 	 * This method is for fetching Pong points from database
-	 * @param rsSet
+	 * @param arrayList
 	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
 	 */
-	private static ObservableList<HiScore> getPongScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
-		try{
-			ObservableList<HiScore> list = FXCollections.observableArrayList();
-			
-			while(rsSet.next()) {
-				HiScore hiScore = new HiScore();
-				hiScore.setPoScore(rsSet.getInt("PongScore"));
-				list.add(hiScore);
-			}
-			return list;
-		}catch (SQLException e){
-			System.out.println("Error ocurred while fetching the data from DC"+e);
-			e.printStackTrace();
-			throw e;
+	private static ObservableList<HiScore> getPongScoreObjects(ArrayList<Integer> arrayList) {
+		ObservableList<HiScore> list = FXCollections.observableArrayList();
+		for (int i =0; i <arrayList.size(); i++) {
+			HiScore hiScore = new HiScore();
+			hiScore.setPoScore(arrayList.get(i));
+			list.add(hiScore);
 		}
+		return list;
 	}
 	
 	/**
 	 * This method is for retrieving Block Breaker points from database
 	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
 	 */
-	public static ObservableList<HiScore> getBlockBreakerRecords() throws ClassNotFoundException, SQLException{
-		String sql = "SELECT BlockBreakerScore FROM users"+" ORDER BY BlockBreakerScore DESC";
-		try {
-			ResultSet rsSet = ConnectionClass.dbExecute(sql);
-			ObservableList<HiScore> list = getBlockBreakerScoreObjects(rsSet);
-			return list;
-		}catch (SQLException e) {
-			System.out.println("Error occured while fetching the records from DB"+e);
-			e.printStackTrace();
-			throw e;
-		}
+	public static ObservableList<HiScore> getBlockBreakerRecords() {
+		
+		ObservableList<HiScore> list = getBlockBreakerScoreObjects(BlockBreakerMainController.bbScoreList);
+		return list;
 	}
 	
-	private static ObservableList<HiScore> getBlockBreakerScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
-		try{
-			ObservableList<HiScore> list = FXCollections.observableArrayList();
-			
-			while(rsSet.next()) {
-				HiScore hiScore = new HiScore();
-				hiScore.setBBScore(rsSet.getInt("BlockBreakerScore"));
-				list.add(hiScore);
-			}
-			return list;
-		}catch (SQLException e){
-			System.out.println("Error ocurred while fetching the data from DC"+e);
-			e.printStackTrace();
-			throw e;
+	private static ObservableList<HiScore> getBlockBreakerScoreObjects(ArrayList<Integer> arrayList) {
+		ObservableList<HiScore> list = FXCollections.observableArrayList();
+		for (int i =0; i <arrayList.size(); i++) {
+			HiScore hiScore = new HiScore();
+			hiScore.setBBScore(arrayList.get(i));
+			list.add(hiScore);
 		}
+		return list;
 	}
 	
-	public static ObservableList<HiScore> getTetrisRecords() throws ClassNotFoundException, SQLException{
-		String sql = "SELECT TetrisScore FROM users"+" ORDER BY TetrisScore DESC";
-		try {
-			ResultSet rsSet = ConnectionClass.dbExecute(sql);
-			ObservableList<HiScore> list = getTetrisScoreObjects(rsSet);
-			return list;
-		}catch (SQLException e) {
-			System.out.println("Error occured while fetching the records from DB"+e);
-			e.printStackTrace();
-			throw e;
-		}
+	 /**
+	  * This method is for retrieving Pong points from database
+	  * @return ObservableList<HiScore> This is the list of user's Pong score 
+	  */
+	public static ObservableList<HiScore> getTetrisRecords() {
+		ObservableList<HiScore> list = getTetrisScoreObjects(Score.tetrisScoreList);
+		return list;
 	}
 	
-	private static ObservableList<HiScore> getTetrisScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
-		try{
-			ObservableList<HiScore> list = FXCollections.observableArrayList();
-			
-			while(rsSet.next()) {
-				HiScore hiScore = new HiScore();
-				hiScore.setTetScore(rsSet.getInt("TetrisScore"));
-				list.add(hiScore);
-			}
-			return list;
-		}catch (SQLException e){
-			System.out.println("Error ocurred while fetching the data from DC"+e);
-			e.printStackTrace();
-			throw e;
+	/**
+	 * This method is for fetching Pong points from database
+	 * @param arrayList
+	 * @return
+	 */
+	private static ObservableList<HiScore> getTetrisScoreObjects(ArrayList<Integer> arrayList) {
+		ObservableList<HiScore> list = FXCollections.observableArrayList();
+		for (int i =0; i <arrayList.size(); i++) {
+			HiScore hiScore = new HiScore();
+			hiScore.setTetScore(arrayList.get(i));
+			list.add(hiScore);
 		}
+		return list;
 	}
 	
-	public static ObservableList<HiScore> getSnakeRecords() throws ClassNotFoundException, SQLException{
-		String sql = "SELECT SnakeScore FROM users"+" ORDER BY SnakeScore DESC";
-		try {
-			ResultSet rsSet = ConnectionClass.dbExecute(sql);
-			ObservableList<HiScore> list = getSnakeScoreObjects(rsSet);
-			return list;
-		}catch (SQLException e) {
-			System.out.println("Error occured while fetching the records from DB"+e);
-			e.printStackTrace();
-			throw e;
-		}
+	/**
+	  * This method is for retrieving Pong points from database
+	  * @return ObservableList<HiScore> This is the list of user's Pong score 
+	  */
+	public static ObservableList<HiScore> getSnakeRecords() {
+		ObservableList<HiScore> list = getSnakeScoreObjects(SnakeController.snakeScoreList);
+		return list;
 	}
 	
-	private static ObservableList<HiScore> getSnakeScoreObjects(ResultSet rsSet)throws ClassNotFoundException, SQLException {
-		try{
-			ObservableList<HiScore> list = FXCollections.observableArrayList();
-			
-			while(rsSet.next()) {
-				HiScore hiScore = new HiScore();
-				hiScore.setSnaScore(rsSet.getInt("SnakeScore"));
-				list.add(hiScore);
-			}
-			return list;
-		}catch (SQLException e){
-			System.out.println("Error ocurred while fetching the data from DC"+e);
-			e.printStackTrace();
-			throw e;
+	/**
+	 * This method is for fetching Pong points from database
+	 * @param arrayList
+	 * @return
+	 */
+	private static ObservableList<HiScore> getSnakeScoreObjects(ArrayList<Integer> arrayList) {
+		ObservableList<HiScore> list = FXCollections.observableArrayList();
+		for (int i =0; i <arrayList.size(); i++) {
+			HiScore hiScore = new HiScore();
+			hiScore.setSnaScore(arrayList.get(i));
+			list.add(hiScore);
 		}
+		return list;
 	}
 }

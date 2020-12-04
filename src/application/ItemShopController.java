@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class ItemShopController implements Initializable{
 	@FXML ImageView storeIcon;
 	@FXML Button blockBreakerButton, pongButton, snakeButton, tetrisButton, ogBB, ogTetris, ogSnake, ogPong;
-	@FXML  ImageView pointIcon;
+	@FXML ImageView pointIcon;
 	@FXML TextField totalScore;
 	@FXML TextArea tetrisRule;
 	

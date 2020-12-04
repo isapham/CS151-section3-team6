@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import application.GamesController;
@@ -17,22 +18,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SnakeDBController implements Initializable{
+public class SnakeDBController extends SnakeController implements Initializable{
 	@FXML
 	private TextField gameScoreTxt,totalScoreTxt;
 	
 	@Override
 	public void initialize (URL location, ResourceBundle resources) {
-		try {
-			GamesController.insertUsernameSnake();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		gameScoreTxt.setText(Integer.toString(SnakeController.snakeScore));
+		GamesController.totalPoints = snakeScore+GamesController.totalPoints;
+		snakeScoreList.add(snakeScore);
+		Collections.sort(snakeScoreList,Collections.reverseOrder()); 
+		gameScoreTxt.setText(Integer.toString(snakeScore));
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}
 	

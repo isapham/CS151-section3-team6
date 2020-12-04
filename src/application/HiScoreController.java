@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,10 +29,10 @@ public class HiScoreController {
 	public void initialize () throws Exception{
 		hiScoreIcon1.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 		hiScoreIcon2.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
-		colBlockBreakerScore.setCellValueFactory(cellData -> cellData.getValue().getBlockBreakerScore().asObject());
-		colTetrisScore.setCellValueFactory(cellData -> cellData.getValue().getTetrisScore().asObject());
-		colSnakeScore.setCellValueFactory(cellData -> cellData.getValue().getSnakeScore().asObject());
-		colPongScore.setCellValueFactory(cellData -> cellData.getValue().getPongScore().asObject());
+		colBlockBreakerScore.setCellValueFactory(data -> data.getValue().getBlockBreakerScore().asObject());
+		colTetrisScore.setCellValueFactory(data -> data.getValue().getTetrisScore().asObject());
+		colSnakeScore.setCellValueFactory(data -> data.getValue().getSnakeScore().asObject());
+		colPongScore.setCellValueFactory(data -> data.getValue().getPongScore().asObject());
 		
 		ObservableList<HiScore> list1 =GamesController.getPongRecords();
 		pongTable.setItems(list1);
