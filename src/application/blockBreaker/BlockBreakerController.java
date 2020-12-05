@@ -15,7 +15,6 @@ import javafx.util.Duration;
 /**
  * This class is for block breaker game with
  * original ball shape - round shape ball
- * @author annluu
  *
  */
 public class BlockBreakerController extends BlockBreakerMainController{
