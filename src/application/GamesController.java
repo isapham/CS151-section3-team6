@@ -181,12 +181,7 @@ public class GamesController implements Initializable{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		String pathToFxml ="";
-		if (circleBall==true) {
-			pathToFxml = "src/main/resources/Pong.fxml";
-		} else {
-			pathToFxml = "src/main/resources/PongSquare.fxml";
-		}
+		String pathToFxml ="src/main/resources/Pong.fxml";
 		
 		URL fxmlUrl = new File(pathToFxml).toURI().toURL();
 		fxmlLoader.setLocation(fxmlUrl);

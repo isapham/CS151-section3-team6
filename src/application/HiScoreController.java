@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import application.pong.PongController;
+import application.snake.SnakeController;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +22,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class HiScoreController {
+	
+	
 	@FXML private ImageView hiScoreIcon1, hiScoreIcon2;
 	
 	@FXML private TableColumn<HiScore, Integer> colPongScore, colBlockBreakerScore, colTetrisScore, colSnakeScore;
@@ -30,9 +35,13 @@ public class HiScoreController {
 		hiScoreIcon1.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 		hiScoreIcon2.setImage(new Image("/main/resources/cs151GameHiScoreIcon.png"));
 		colBlockBreakerScore.setCellValueFactory(data -> data.getValue().getBlockBreakerScore().asObject());
+		colBlockBreakerScore.setStyle("-fx-alignment: CENTER");
 		colTetrisScore.setCellValueFactory(data -> data.getValue().getTetrisScore().asObject());
+		colTetrisScore.setStyle("-fx-alignment: CENTER");
 		colSnakeScore.setCellValueFactory(data -> data.getValue().getSnakeScore().asObject());
+		colSnakeScore.setStyle("-fx-alignment: CENTER");
 		colPongScore.setCellValueFactory(data -> data.getValue().getPongScore().asObject());
+		colPongScore.setStyle("-fx-alignment: CENTER");
 		
 		ObservableList<HiScore> list1 =GamesController.getPongRecords();
 		pongTable.setItems(list1);

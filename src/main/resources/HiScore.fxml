@@ -26,8 +26,7 @@
                <children>
                   <TableView fx:id="pongTable" prefHeight="219.0" prefWidth="339.0">
                     <columns>
-                      <TableColumn prefWidth="62.0" text="ID" />
-                      <TableColumn fx:id="colPongScore" prefWidth="276.0" text="PONG" />
+                      <TableColumn fx:id="colPongScore" prefWidth="338.0" text="PONG SCORES RANK" />
                     </columns>
                   </TableView>
                </children>
@@ -36,8 +35,7 @@
                <children>
                   <TableView fx:id="blockBreakerTable" prefHeight="219.0" prefWidth="339.0">
                      <columns>
-                        <TableColumn prefWidth="62.0" text="ID" />
-                        <TableColumn fx:id="colBlockBreakerScore" prefWidth="276.0" text="BLOCK BREAKER" />
+                        <TableColumn fx:id="colBlockBreakerScore" prefWidth="338.0" text="BLOCK BREAKER SCORES RANK" />
                      </columns>
                   </TableView>
                </children>
@@ -46,8 +44,7 @@
                <children>
                   <TableView fx:id="tetrisTable" prefHeight="219.0" prefWidth="339.0">
                      <columns>
-                        <TableColumn prefWidth="62.0" text="ID" />
-                        <TableColumn fx:id="colTetrisScore" prefWidth="276.0" text="TETRIS" />
+                        <TableColumn fx:id="colTetrisScore" prefWidth="338.0" text="TETRIS SCORES RANK" />
                      </columns>
                   </TableView>
                </children>
@@ -56,8 +53,7 @@
                <children>
                   <TableView fx:id="snakeTable" prefHeight="219.0" prefWidth="339.0">
                      <columns>
-                        <TableColumn prefWidth="62.0" text="ID" />
-                        <TableColumn fx:id="colSnakeScore" prefWidth="276.0" text="SNAKE" />
+                        <TableColumn fx:id="colSnakeScore" prefWidth="338.0" text="SNAKE SCORES RANK" />
                      </columns>
                   </TableView>
                </children>
