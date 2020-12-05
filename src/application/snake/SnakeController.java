@@ -238,7 +238,7 @@ public class SnakeController
 		Scene gamesMenuScene = new Scene (gamesMenu);
 		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		windowView.setScene(gamesMenuScene);
-		windowView.setTitle("Game Home Page);
+		windowView.setTitle("Game Home Page");
 		windowView.show();
 	 }
 	
