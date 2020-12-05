@@ -205,9 +205,9 @@ public class SnakeController
         //fruitRoundShape = true; //true=round, false=square
         Color foodColor = Color.RED;                                                                //food color
         gc.setFill(foodColor);                                                         //fill food with food color
-        if (GamesController.fruitRoundShape = true) {
+        if (GamesController.fruitRoundShape == true) {
         	gc.fillOval(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
-        } else if (GamesController.fruitRoundShape = false) {
+        } else if (GamesController.fruitRoundShape == false) {
         	gc.fillRect(foodX * cornerSize, foodY * cornerSize, cornerSize, cornerSize);   //shape of food
         }
 
@@ -238,6 +238,7 @@ public class SnakeController
 		Scene gamesMenuScene = new Scene (gamesMenu);
 		Stage windowView = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		windowView.setScene(gamesMenuScene);
+		windowView.setTitle("Game Home Page);
 		windowView.show();
 	 }
 	

@@ -14,6 +14,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+/**
+ * This class is for notification panel and show score to user
+ * @author annluu
+ *
+ */
 public class NotificationPanel extends BorderPane{
 	public NotificationPanel(String text) {
         setMinHeight(200);
@@ -27,6 +32,10 @@ public class NotificationPanel extends BorderPane{
 
     }
 
+	/**
+	 * This class is for showing user score 
+	 * @param list is an observable list 
+	 */
     public void showScore(ObservableList<Node> list) {
         FadeTransition ft = new FadeTransition(Duration.millis(2000), this);
         TranslateTransition tt = new TranslateTransition(Duration.millis(2500), this);

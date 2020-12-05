@@ -19,6 +19,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This class is for saving user tetris score 
+ * @author annluu
+ *
+ */
 public class TetrisDBController implements Initializable{
 	
 	@FXML
@@ -33,7 +38,11 @@ public class TetrisDBController implements Initializable{
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}
 	
-	
+	/**
+	 * This method is button function for user to switch back to menu
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

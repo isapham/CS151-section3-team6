@@ -40,6 +40,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * This class is for GUI Controller of Tetris game
+ * @author annluu
+ *
+ */
 public class GuiController implements Initializable {
 	private static final int BRICK_SIZE = 20;
 	public static int tetrisColor = 0; //black and white =0; colorful =1; colorblind color = 2
@@ -167,6 +172,12 @@ public class GuiController implements Initializable {
         timeLine.play();
     }
 
+    /**
+     * This method is for color selection
+     * black/white colors, colorful colors or color blind colors
+     * @param i 
+     * @return Paint color
+     */
     private Paint getFillColor(int i) {
     	Paint returnPaint = null; 
     	Color myColor1 = new Color(230.0/255.0, 159.0/255.0, 0.0/255.0,255/255.0);
@@ -274,6 +285,10 @@ public class GuiController implements Initializable {
     	return returnPaint;
     }
     
+   /**
+    * This class is for next brick window which shows upcomming brick 
+    * @param nextBrickData
+    */
     private void generatePreviewPanel(int[][] nextBrickData) {
         nextBrick.getChildren().clear();
         for (int i = 0; i < nextBrickData.length; i++) {
@@ -287,6 +302,10 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * This class if for refreshing brick
+     * @param brick
+     */
     private void refreshBrick(ViewData brick) {
         if (isPause.getValue() == Boolean.FALSE) {
             brickPanel.setLayoutX(gamePanel.getLayoutX() + brick.getxPosition() * brickPanel.getVgap() + brick.getxPosition() * BRICK_SIZE);
