@@ -14,14 +14,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class ItemShopController implements Initializable{
 	@FXML ImageView storeIcon;
+	@FXML Label alertText, alertText1;
 	@FXML Button blockBreakerButton, pongButton, snakeButton, tetrisButton, ogBB, ogTetris, ogSnake, ogPong;
 	@FXML ImageView pointIcon;
 	@FXML TextField totalScore;
@@ -37,36 +40,51 @@ public class ItemShopController implements Initializable{
 		if (GamesController.totalPoints >= 10 && GamesController.totalPoints < 20) {
 			pongButton.setDisable(false);
 			ogBB.setDisable(false);
-			ogTetris.setDisable(false);
+			if (GamesController.cbEnabled == 0 ) {
+				ogTetris.setDisable(false);
+			}
 			ogSnake.setDisable(false);
 			ogPong.setDisable(false);
 		}else if(GamesController.totalPoints >= 20 && GamesController.totalPoints < 30) {
 			pongButton.setDisable(false);
-			tetrisButton.setDisable(false);
+			tetrisAlert();
 			ogBB.setDisable(false);
-			ogTetris.setDisable(false);
 			ogSnake.setDisable(false);
 			ogPong.setDisable(false);
 		}else if (GamesController.totalPoints >= 30 && GamesController.totalPoints < 40) {
 			blockBreakerButton.setDisable(false);
-			tetrisButton.setDisable(false);
+			tetrisAlert();
 			pongButton.setDisable(false);
 			ogBB.setDisable(false);
-			ogTetris.setDisable(false);
 			ogSnake.setDisable(false);
 			ogPong.setDisable(false);
 		}else if (GamesController.totalPoints >= 40) {
 			snakeButton.setDisable(false);
 			blockBreakerButton.setDisable(false);
-			tetrisButton.setDisable(false);
+			tetrisAlert();
 			pongButton.setDisable(false);
 			ogBB.setDisable(false);
-			ogTetris.setDisable(false);
 			ogSnake.setDisable(false);
 			ogPong.setDisable(false);
 		}
 	}
 	
+	/**
+	 * This method is tetris game.
+	 * if user is using colorblind mode, they cannot trade points for tetris effect. 
+	 */
+	public void tetrisAlert() {
+		if (GamesController.cbEnabled == 0 ) {
+			tetrisButton.setDisable(false);
+			ogTetris.setDisable(false);
+		}
+		else {
+			alertText.setTextFill(Color.WHITE);
+			alertText.setVisible(true);
+			alertText1.setTextFill(Color.WHITE);
+			alertText1.setVisible(true);
+		}
+	}
 	/**
 	 * This method is the button function to switch back to home page
 	 * @param event

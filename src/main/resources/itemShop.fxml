@@ -63,7 +63,7 @@
                   <Font name="Courier New Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="61.0" layoutY="514.0" prefWidth="595.0" text="40pts: Change Food to Triangle Shape..." textFill="WHITE">
+            <Label layoutX="61.0" layoutY="514.0" prefWidth="595.0" text="40pts: Change Food to Square Shape..." textFill="WHITE">
                <font>
                   <Font name="Courier New Bold" size="25.0" />
                </font>
@@ -103,6 +103,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label fx:id="alertText" layoutX="660.0" layoutY="246.0" prefHeight="22.0" prefWidth="170.0" text="This function is not available" textAlignment="CENTER" visible="false" />
+            <Label fx:id="alertText1" layoutX="662.0" layoutY="262.0" prefHeight="22.0" prefWidth="170.0" text="under Colorblind mode" textAlignment="CENTER" visible="false" />
             </children>
 		</Pane>
 	</center>

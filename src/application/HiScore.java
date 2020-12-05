@@ -13,14 +13,12 @@ public class HiScore {
 	private IntegerProperty pongScoreProperty;
 	private IntegerProperty tetrisScoreProperty;
 	private IntegerProperty snakeScoreProperty;
-	private IntegerProperty totalScoreProperty;
 	
 	public HiScore() {
 		this.blockBreakerScoreProperty = new SimpleIntegerProperty();
 		this.pongScoreProperty = new SimpleIntegerProperty();
 		this.snakeScoreProperty = new SimpleIntegerProperty();
 		this.tetrisScoreProperty = new SimpleIntegerProperty();
-		this.totalScoreProperty = new SimpleIntegerProperty();
 	}
 	
 	/**
@@ -104,24 +102,19 @@ public class HiScore {
 		return this.snakeScoreProperty.get();
 	}
 	
+	/**
+	 * This method is for setting Snake Score
+	 * @param score is snake score user earn
+	 */
 	public void setSnaScore(int score) {
 		this.snakeScoreProperty.set(score);
 	}
 	
+	/**
+	 * This method is for getting snake score
+	 * @return IntegerProperty data type
+	 */
 	public IntegerProperty getSnakeScore() {
 		return snakeScoreProperty;
-	}
-	
-	//this is for block breaker game score
-	public int getTotScore() {
-		return this.totalScoreProperty.get();
-	}
-	
-	public void setTotScore(int score) {
-		this.totalScoreProperty.set(score);
-	}
-	
-	public IntegerProperty getTotalScore() {
-		return this.totalScoreProperty;
 	}
 }
