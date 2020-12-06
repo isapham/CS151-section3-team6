@@ -1,10 +1,8 @@
 package application.blockBreaker;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.ResourceBundle;
 

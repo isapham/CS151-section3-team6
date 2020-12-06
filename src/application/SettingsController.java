@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.tetris.gui.GuiController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,8 +35,10 @@ public class SettingsController implements Initializable{
 		gearIcon.setImage(new Image("/main/resources/cs151GameGearIconThing.png"));
 		if (GamesController.cbEnabled == 0) {
 			toggle.setText(enabled);
+			GuiController.tetrisColor = 2;
 		} else {
 			toggle.setText(disabled);
+			GuiController.tetrisColor = 0;
 		}
 	}
 

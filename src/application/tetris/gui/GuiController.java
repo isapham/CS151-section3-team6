@@ -186,7 +186,7 @@ public class GuiController implements Initializable {
     	Color myColor4 = new Color(240.0/255.0, 228.0/255.0, 66.0/255.0, 255/255.0);
     	Color myColor5 = new Color(0.0/255.0, 114.0/255.0, 178.0/255.0, 255/255.0);
     	Color myColor6 = new Color(213.0/255.0,94.0/255.0,0.0/255.0,255/255.0);
-    	Color myColor7 = new Color(204.0/255.0,121.0/255.0,167.0/255.0,255/255.0);
+    	Color myColor7 = new Color(204.0/255.0,121.0/255.0,167.0/255.0,255/255.0); 
     	
     	if (tetrisColor == 0) { //0 means black and white only
     		switch (i) {

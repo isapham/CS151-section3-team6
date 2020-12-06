@@ -218,9 +218,7 @@ public class GamesController implements Initializable{
 	public void switchToTetris(ActionEvent event) throws IOException{
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         currStage.close();
-		if(cbEnabled == 1) {
-			GuiController.tetrisColor = 2;
-		}
+		
 		
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		String pathToFxml = "src/main/resources/Tetris.fxml";

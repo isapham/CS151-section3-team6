@@ -18,6 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * This class is for saving score of snake game
+ * @author annluu
+ *
+ */
 public class SnakeDBController extends SnakeController implements Initializable{
 	@FXML
 	private TextField gameScoreTxt,totalScoreTxt;
@@ -31,6 +36,9 @@ public class SnakeDBController extends SnakeController implements Initializable{
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}
 	
+	/**
+	 * This method is for switch back to main menu
+	 */
 	@FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
 		Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

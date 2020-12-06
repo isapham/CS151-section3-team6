@@ -3,6 +3,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * This class is for Colorblind mode Snake game
+ *
+ */
 public class CBSnakeController extends SnakeController{
 	@Override
 	protected void tick(GraphicsContext gc)
