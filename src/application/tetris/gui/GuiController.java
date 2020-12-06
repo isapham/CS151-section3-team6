@@ -42,7 +42,6 @@ import javafx.util.Duration;
 
 /**
  * This class is for GUI Controller of Tetris game
- * @author annluu
  *
  */
 public class GuiController implements Initializable {
@@ -137,6 +136,11 @@ public class GuiController implements Initializable {
         scoreValue.setEffect(reflection);
     }
 
+    /**
+     * This method is for initialize tetris game view 
+     * @param boardMatrix
+     * @param brick
+     */
     public void initGameView(int[][] boardMatrix, ViewData brick) {
         displayMatrix = new Rectangle[boardMatrix.length][boardMatrix[0].length];
         for (int i = 2; i < boardMatrix.length; i++) {
@@ -319,6 +323,10 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * This method is for refreshing game background
+     * @param board is the matrix show bricks
+     */
     public void refreshGameBackground(int[][] board) {
         for (int i = 2; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -327,12 +335,21 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * This function is for setting rectangle data
+     * @param color
+     * @param rectangle
+     */
     private void setRectangleData(int color, Rectangle rectangle) {
         rectangle.setFill(getFillColor(color));
         rectangle.setArcHeight(9);
         rectangle.setArcWidth(9);
     }
 
+    /**
+     * This method is for moving down brick
+     * @param event
+     */
     private void moveDown(MoveEvent event) {
         if (isPause.getValue() == Boolean.FALSE) {
             DownData downData = eventListener.onDownEvent(event);
@@ -346,14 +363,25 @@ public class GuiController implements Initializable {
         gamePanel.requestFocus();
     }
 
+    /**
+     * This method is for waiting for a function to occur 
+     * @param eventListener
+     */
     public void setEventListener(InputEventListener eventListener) {
         this.eventListener = eventListener;
     }
 
+    /**
+     * This method is for binding score
+     * @param integerProperty
+     */
     public void bindScore(IntegerProperty integerProperty) {
         scoreValue.textProperty().bind(integerProperty.asString());
     }
 
+    /**
+     * This method is for game over
+     */
     public void gameOver() {
         timeLine.stop();
         gameOverPanel.setVisible(true);
@@ -361,6 +389,10 @@ public class GuiController implements Initializable {
 
     }
 
+    /**
+     * This method is a button function to create a new game
+     * @param actionEvent
+     */
     public void newGame(ActionEvent actionEvent) {
         timeLine.stop();
         gameOverPanel.setVisible(false);
@@ -371,10 +403,19 @@ public class GuiController implements Initializable {
         isGameOver.setValue(Boolean.FALSE);
     }
 
+    /**
+     * This method is a button function to pause the game
+     * @param actionEvent
+     */
     public void pauseGame(ActionEvent actionEvent) {
         gamePanel.requestFocus();
     }
     
+    /**
+     * This method is a button function to switch back to main menu
+     * @param event
+     * @throws IOException
+     */
     @FXML
 	public void switchToGameMenu(ActionEvent event) throws IOException {
     	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -392,6 +433,11 @@ public class GuiController implements Initializable {
 		window.show();
 	}
 	
+    /**
+     * This method is a button function to save point
+     * @param event
+     * @throws IOException
+     */
     @FXML
 	public void switchToSavePoint(ActionEvent event) throws IOException {
     	Stage currStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

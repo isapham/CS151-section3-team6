@@ -6,12 +6,24 @@ import java.util.Deque;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class is for operation inside game board 
+ *
+ */
 public class MatrixOperations {
 	//We don't want to instantiate this utility class
     private MatrixOperations(){
 
     }
 
+    /**
+     * This method is check if intersection of bricks
+     * @param matrix
+     * @param brick
+     * @param x
+     * @param y
+     * @return boolean value
+     */
     public static boolean intersect(final int[][] matrix, final int[][] brick, int x, int y) {
         for (int i = 0; i < brick.length; i++) {
             for (int j = 0; j < brick[i].length; j++) {
@@ -25,6 +37,13 @@ public class MatrixOperations {
         return false;
     }
 
+    /**
+     * this method is checking if the brick is out of bound or not
+     * @param matrix
+     * @param targetX
+     * @param targetY
+     * @return boolean value
+     */
     private static boolean checkOutOfBound(int[][] matrix, int targetX, int targetY) {
         boolean returnValue = true;
         if (targetX >= 0 && targetY < matrix.length && targetX < matrix[targetY].length) {
@@ -33,6 +52,11 @@ public class MatrixOperations {
         return returnValue;
     }
 
+    /**
+     * This method is for copying the matrix of board game
+     * @param original
+     * @return a matrix
+     */
     public static int[][] copy(int[][] original) {
         int[][] myInt = new int[original.length][];
         for (int i = 0; i < original.length; i++) {
@@ -44,6 +68,14 @@ public class MatrixOperations {
         return myInt;
     }
 
+    /**
+     * This method is for merging bricks 
+     * @param filledFields
+     * @param brick
+     * @param x
+     * @param y
+     * @return a brick matrix
+     */
     public static int[][] merge(int[][] filledFields, int[][] brick, int x, int y) {
         int[][] copy = copy(filledFields);
         for (int i = 0; i < brick.length; i++) {
@@ -58,6 +90,11 @@ public class MatrixOperations {
         return copy;
     }
 
+    /**
+     * this method is for clearing row feature
+     * @param matrix
+     * @return ClearRow 
+     */
     public static ClearRow checkRemoving(final int[][] matrix) {
         int[][] tmp = new int[matrix.length][matrix[0].length];
         Deque<int[]> newRows = new ArrayDeque<>();
@@ -90,6 +127,11 @@ public class MatrixOperations {
         return new ClearRow(clearedRows.size(), tmp, scoreBonus);
     }
 
+    /**
+     * this method is to copy matrix 
+     * @param list
+     * @return
+     */
     public static List<int[][]> deepCopyList(List<int[][]> list){
         return list.stream().map(MatrixOperations::copy).collect(Collectors.toList());
     }

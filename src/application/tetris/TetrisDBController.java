@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 
 /**
  * This class is for saving user tetris score 
- * @author annluu
  *
  */
 public class TetrisDBController implements Initializable{

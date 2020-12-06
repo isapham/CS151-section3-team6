@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"application.tetris.logic","l":"ClearRow"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"application.tetris.logic","l":"SimpleBoard"}];updateSearchResults();

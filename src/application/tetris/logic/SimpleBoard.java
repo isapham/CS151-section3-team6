@@ -8,6 +8,10 @@ import application.tetris.logic.bricks.RandomBrickGenerator;
 import application.tetris.logic.rotator.BrickRotator;
 import application.tetris.logic.rotator.NextShapeInfo;
 
+/**
+ * This class is for creating game board
+ *
+ */
 public class SimpleBoard implements Board {
 	private final int width;
     private final int height;
