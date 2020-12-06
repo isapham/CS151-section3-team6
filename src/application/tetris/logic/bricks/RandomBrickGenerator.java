@@ -6,6 +6,10 @@ import java.util.Deque;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class is to generate a random brick
+ *
+ */
 public class RandomBrickGenerator implements BrickGenerator {
 	private final List<Brick> brickList;
 

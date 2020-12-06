@@ -5,6 +5,11 @@ import java.util.List;
 
 import application.tetris.logic.MatrixOperations;
 
+/**
+ * This class is for generating Z Brick Shape
+ * @author annluu
+ *
+ */
 public final class ZBrick implements Brick{
 	private final List<int[][]> brickMatrix = new ArrayList<>();
 

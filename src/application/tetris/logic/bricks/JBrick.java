@@ -5,6 +5,10 @@ import java.util.List;
 
 import application.tetris.logic.MatrixOperations;
 
+/**
+ * This class is for generating a J Shape brick
+ *
+ */
 public final class JBrick implements Brick{
 	private final List<int[][]> brickMatrix = new ArrayList<>();
 

@@ -13,7 +13,7 @@ public final class ViewData {
     private final int[][] nextBrickData;
     
     /**
-     * 
+     * This method is for viewing data
      * @param brickData
      * @param xPosition
      * @param yPosition
@@ -26,32 +26,32 @@ public final class ViewData {
         this.nextBrickData = nextBrickData;
     }
     /**
-     * 
-     * @return
+     * this method is for getting brick data
+     * @return matrix
      */
     public int[][] getBrickData() {
         return MatrixOperations.copy(brickData);
     }
     
     /**
-     * 
-     * @return 
+     * this method is for getting brick position
+     * @return xPosition is a coordinate of a brick
      */
     public int getxPosition() {
         return xPosition;
     }
 
     /**
-     * 
-     * @return
+     * this method is for getting brick position
+     * @return yPosition is a coordinate of a brick
      */
     public int getyPosition() {
         return yPosition;
     }
     
     /**
-     * 
-     * @return 
+     * This method is for getting next brick data
+     * @return matrix 
      */
     public int[][] getNextBrickData() {
         return MatrixOperations.copy(nextBrickData);
