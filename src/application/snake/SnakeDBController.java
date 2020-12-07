@@ -3,7 +3,6 @@ package application.snake;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -20,7 +19,6 @@ import javafx.stage.Stage;
 
 /**
  * This class is for saving score of snake game
- * @author annluu
  *
  */
 public class SnakeDBController extends SnakeController implements Initializable{
