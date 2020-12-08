@@ -1,7 +1,10 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -390,5 +393,18 @@ public class GamesController implements Initializable{
 			list.add(hiScore);
 		}
 		return list;
+	}
+	
+	public static void saveToFile(String fileName, ArrayList<Integer> list){
+		try {
+			FileWriter fw = new FileWriter (fileName);
+			Writer output = new BufferedWriter(fw);
+			for (int i=0; i<list.size(); i++) {
+				output.write(list.get(i)+"\n");
+			}
+			output.close();
+		} catch(Exception e) {
+			
+		}
 	}
 }

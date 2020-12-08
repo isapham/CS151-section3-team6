@@ -28,6 +28,7 @@ public class PongDBController extends PongController implements Initializable{
 		GamesController.totalPoints = ppoints+GamesController.totalPoints;
 		pongScoreList.add(ppoints);
 		Collections.sort(pongScoreList,Collections.reverseOrder());
+		GamesController.saveToFile("src/main/resources/outputPong.txt",pongScoreList);
 		gameScoreTxt.setText(PongController.ppoints.toString());
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}

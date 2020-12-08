@@ -1,9 +1,11 @@
-For this assignment, our team completed 1 feature which is allow user to play games. 
-Among 4 games, user can select any game that user wants to play. 
-
-
 1) Run Main.java
 2) Select Games
 3) Select a game you want to play . 
-(Pong and Blockbreaker are 90% done. Tetris and Snake are 50% done. 
-Although UI of 4 games is not 100% complete, all 4 games run without errors)  
+4) Save your points and use it in the item shop
+
+*Note: 
+- If paddle in Block Breaker doesn't move, please try holding Ctrl button and
+move it to the left and right.
+- Games' scores won't be saved after system exit. However, we still have txt file to save points. 
+
+

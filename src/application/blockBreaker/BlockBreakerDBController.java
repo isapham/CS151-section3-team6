@@ -1,12 +1,17 @@
 package application.blockBreaker;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
 import application.GamesController;
+import application.HiScore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +31,7 @@ public class BlockBreakerDBController extends BlockBreakerMainController impleme
 		GamesController.totalPoints = points+GamesController.totalPoints;
 		bbScoreList.add(points);
 		Collections.sort(bbScoreList,Collections.reverseOrder());  
+		GamesController.saveToFile("src/main/resources/outputBB.txt",bbScoreList);
 		gameScoreTxt.setText(points.toString());
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}

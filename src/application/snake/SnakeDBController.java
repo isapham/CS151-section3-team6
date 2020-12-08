@@ -30,6 +30,8 @@ public class SnakeDBController extends SnakeController implements Initializable{
 		GamesController.totalPoints = snakeScore+GamesController.totalPoints;
 		snakeScoreList.add(snakeScore);
 		Collections.sort(snakeScoreList,Collections.reverseOrder()); 
+		GamesController.saveToFile("src/main/resources/outputSnake.txt",snakeScoreList);
+
 		gameScoreTxt.setText(Integer.toString(snakeScore));
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}

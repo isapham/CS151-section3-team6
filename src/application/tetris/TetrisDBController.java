@@ -32,6 +32,8 @@ public class TetrisDBController implements Initializable{
 		GamesController.totalPoints = Score.score.getValue()+GamesController.totalPoints;
 		Score.tetrisScoreList.add(Score.score.getValue());
 		Collections.sort(Score.tetrisScoreList,Collections.reverseOrder()); 
+		GamesController.saveToFile("src/main/resources/outputTetris.txt",Score.tetrisScoreList);
+
 		gameScoreTxt.setText(Score.score.getValue().toString());
 		totalScoreTxt.setText(Integer.toString(GamesController.totalPoints));
 	}
